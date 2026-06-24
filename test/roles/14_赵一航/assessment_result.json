@@ -1,0 +1,61 @@
+{
+  "user_id": "e579d898-ab2d-4afa-8b06-1f35ed8c8f64",
+  "username": "role14_zhaoyihang",
+  "password": "role123456",
+  "display_name": "赵一航",
+  "label": "角色十四 · 高三体育特长生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "ESR",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 36,
+      "I": 17,
+      "A": 25,
+      "S": 37,
+      "E": 38,
+      "C": 30
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 21,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "ESR",
+    "gallup_top5": [
+      "追求",
+      "伯乐",
+      "交往",
+      "体谅",
+      "成就"
+    ],
+    "gallup_domain": "影响力",
+    "gallup_secondary_domain": "关系建立",
+    "holland_scores": {
+      "R": 36,
+      "I": 17,
+      "A": 25,
+      "S": 37,
+      "E": 38,
+      "C": 30
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0
+    },
+    "holland_quality": {
+      "differentiation": 21,
+      "is_flat": false
+    }
+  }
+}

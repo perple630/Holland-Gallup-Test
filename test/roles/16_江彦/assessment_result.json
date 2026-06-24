@@ -1,0 +1,64 @@
+{
+  "user_id": "5b72b2a1-66ca-4ee0-b46b-ea6d4e33f57c",
+  "username": "role16_jiangyan",
+  "password": "role123456",
+  "display_name": "江彦",
+  "label": "角色十六 · 大二哲学系男生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "AIS",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 10,
+      "I": 37,
+      "A": 41,
+      "S": 24,
+      "E": 15,
+      "C": 13
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 31,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "AIS",
+    "gallup_top5": [
+      "思维",
+      "审慎",
+      "责任",
+      "个别",
+      "搜集"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "执行力",
+    "holland_scores": {
+      "R": 10,
+      "I": 37,
+      "A": 41,
+      "S": 24,
+      "E": 15,
+      "C": 13
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "dual_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0,
+      "dual_side_ratio": 1.0,
+      "themes_scored": 34
+    },
+    "holland_quality": {
+      "differentiation": 31,
+      "is_flat": false
+    }
+  }
+}

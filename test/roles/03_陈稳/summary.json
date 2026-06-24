@@ -1,0 +1,38 @@
+{
+  "username": "role03_chenwen",
+  "password": "role123456",
+  "display_name": "陈稳",
+  "label": "角色三 · 企业财务",
+  "user_id": "988b5bea-7ea5-476d-a23a-f8db17e0f4cb",
+  "generated_at": "2026-06-23T09:54:18.863676+00:00",
+  "holland_code": "CIS",
+  "holland_scores": {
+    "R": 18,
+    "I": 35,
+    "A": 15,
+    "S": 33,
+    "E": 25,
+    "C": 50
+  },
+  "gallup_domain": "战略思维",
+  "gallup_top5": [
+    "回顾",
+    "分析",
+    "专注",
+    "成就",
+    "公平"
+  ],
+  "gallup_secondary_domain": "执行力",
+  "careers": [
+    "财务分析师",
+    "精算师",
+    "数据架构师",
+    "科学家",
+    "研究员",
+    "战略顾问",
+    "教育心理学家",
+    "用户研究员"
+  ],
+  "tension": "你的 Gallup 主导领域（战略思维）与 Holland 三码中的 I 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (战略思维) aligns strongly with the I type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\03_陈稳"
+}

@@ -1,0 +1,64 @@
+{
+  "user_id": "3ecc7349-9f12-4e4d-8fea-d4646f7d917a",
+  "username": "role12_linyuxuan",
+  "password": "role123456",
+  "display_name": "林语萱",
+  "label": "角色十二 · 高二文科女生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "ASE",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 13,
+      "I": 24,
+      "A": 45,
+      "S": 45,
+      "E": 31,
+      "C": 21
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 32,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "ASE",
+    "gallup_top5": [
+      "沟通",
+      "积极",
+      "学习",
+      "自信",
+      "个别"
+    ],
+    "gallup_domain": "影响力",
+    "gallup_secondary_domain": "关系建立",
+    "holland_scores": {
+      "R": 13,
+      "I": 24,
+      "A": 45,
+      "S": 45,
+      "E": 31,
+      "C": 21
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "dual_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0,
+      "dual_side_ratio": 1.0,
+      "themes_scored": 34
+    },
+    "holland_quality": {
+      "differentiation": 32,
+      "is_flat": false
+    }
+  }
+}

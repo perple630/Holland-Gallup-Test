@@ -1,0 +1,604 @@
+{
+  "items": [
+    {
+      "question_num": 1,
+      "statement": "修理或组装机械设备",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 1 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 4,
+      "monologue": "「修理机械设备」——球队器材坏了我也能上手，扳手螺丝刀会用。比较符合。"
+    },
+    {
+      "question_num": 2,
+      "statement": "在户外或车间进行实际操作",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 2 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 5,
+      "monologue": "户外车间实操？训练馆、球场就是我的主场，比教室爽多了。非常符合。"
+    },
+    {
+      "question_num": 3,
+      "statement": "使用工具、仪器或运动器材",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 3 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 5,
+      "monologue": "工具仪器运动器材——篮球、弹力带、力量器械，天天摸。非常符合。"
+    },
+    {
+      "question_num": 4,
+      "statement": "建造、种植或修理东西",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 4 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 3,
+      "monologue": "建造种植修理——动手可以，但不是我的主攻方向。居中。"
+    },
+    {
+      "question_num": 5,
+      "statement": "解决具体的技术或机械问题",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 5 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 3,
+      "monologue": "技术机械问题——场上应变快，但不算技术宅。居中。"
+    },
+    {
+      "question_num": 6,
+      "statement": "操作机器或驾驶车辆",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 6 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 4,
+      "monologue": "操作机器驾驶——身体协调好，学车也快。比较符合。"
+    },
+    {
+      "question_num": 7,
+      "statement": "进行体育运动或体能活动",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 7 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 5,
+      "monologue": "体育运动——篮球特长生，这题不用想。非常符合。"
+    },
+    {
+      "question_num": 8,
+      "statement": "从事农业、园艺或养殖工作",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 8 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 1,
+      "monologue": "农业园艺——跟我没关系。非常不符合。"
+    },
+    {
+      "question_num": 9,
+      "statement": "安装或维修电器设备",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 9 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 3,
+      "monologue": "安装维修电器——能应付，但不是兴趣。居中。"
+    },
+    {
+      "question_num": 10,
+      "statement": "绘制机械图或建筑图",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 10 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "R"
+      ],
+      "score": 3,
+      "monologue": "机械图建筑图——战术板画路线还行。居中。"
+    },
+    {
+      "question_num": 11,
+      "statement": "阅读科学或学术类文章",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 11 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 2,
+      "monologue": "学术文章——文化课勉强及格，读起来费劲。不太符合。"
+    },
+    {
+      "question_num": 12,
+      "statement": "做实验、分析数据或研究问题",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 12 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 1,
+      "monologue": "做实验分析数据——理化那套我认栽。非常不符合。"
+    },
+    {
+      "question_num": 13,
+      "statement": "探索事物背后的原理和规律",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 13 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 3,
+      "monologue": "探索规律——研究对手战术算一点，但不是科学家。居中。"
+    },
+    {
+      "question_num": 14,
+      "statement": "使用数学、统计或计算机工具",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 14 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 2,
+      "monologue": "数学统计计算机——逻辑数学偏弱，各有所长嘛。不太符合。"
+    },
+    {
+      "question_num": 15,
+      "statement": "独立深入思考复杂问题",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 15 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 2,
+      "monologue": "独立深入思考——想得少做得多，一个人啃难题不行。不太符合。"
+    },
+    {
+      "question_num": 16,
+      "statement": "观察自然现象并寻找解释",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 16 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 2,
+      "monologue": "观察自然现象——没那闲心。不太符合。"
+    },
+    {
+      "question_num": 17,
+      "statement": "撰写研究报告或学术论文",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 17 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 1,
+      "monologue": "撰写研究报告——论文格式想想就头大。非常不符合。"
+    },
+    {
+      "question_num": 18,
+      "statement": "学习新的科学理论或技术",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 18 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 1,
+      "monologue": "学习科学理论——复杂理论不耐受，相信实践出真知。非常不符合。"
+    },
+    {
+      "question_num": 19,
+      "statement": "解决逻辑推理或智力谜题",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 19 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 2,
+      "monologue": "逻辑谜题——场上反应快，做谜题没耐心。不太符合。"
+    },
+    {
+      "question_num": 20,
+      "statement": "在实验室里进行精确测量",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 20 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "I"
+      ],
+      "score": 1,
+      "monologue": "实验室精确测量——白大褂跟我无缘。非常不符合。"
+    },
+    {
+      "question_num": 21,
+      "statement": "绘画、写作、音乐或表演",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 21 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 2,
+      "monologue": "绘画写作音乐表演——偶尔哼歌，不算艺术生。不太符合。"
+    },
+    {
+      "question_num": 22,
+      "statement": "设计有创意和美感的作品",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 22 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 2,
+      "monologue": "设计创意美感——海报队里有人做，我负责打球。不太符合。"
+    },
+    {
+      "question_num": 23,
+      "statement": "提出新颖独特的想法",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 23 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 3,
+      "monologue": "新颖独特想法——临场战术变化我脑子转得快。居中。"
+    },
+    {
+      "question_num": 24,
+      "statement": "在自由灵活的环境中工作",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 24 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 4,
+      "monologue": "自由灵活环境——训练有纪律，场上需要灵活应变。比较符合。"
+    },
+    {
+      "question_num": 25,
+      "statement": "通过艺术形式表达情感或观点",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 25 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 2,
+      "monologue": "艺术表达情感——情绪稳定，用球说话。不太符合。"
+    },
+    {
+      "question_num": 26,
+      "statement": "欣赏电影、戏剧、展览或音乐会",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 26 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 4,
+      "monologue": "欣赏电影戏剧展览——爱看 NBA、CBA，比赛就是表演。比较符合。"
+    },
+    {
+      "question_num": 27,
+      "statement": "尝试新的创作材料或表现手法",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 27 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 2,
+      "monologue": "尝试新创作材料——不是创作型。不太符合。"
+    },
+    {
+      "question_num": 28,
+      "statement": "为品牌或产品设计视觉形象",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 28 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 1,
+      "monologue": "品牌视觉设计——不是我的活。非常不符合。"
+    },
+    {
+      "question_num": 29,
+      "statement": "编写故事、剧本或诗歌",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 29 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 1,
+      "monologue": "写故事剧本诗歌——写作文都费劲。非常不符合。"
+    },
+    {
+      "question_num": 30,
+      "statement": "参与即兴表演或创意工作坊",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 30 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "A"
+      ],
+      "score": 4,
+      "monologue": "即兴表演创意工作坊——场上即兴传球单打，算吧。比较符合。"
+    },
+    {
+      "question_num": 31,
+      "statement": "帮助他人解决问题或成长",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 31 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 4,
+      "monologue": "帮助他人——队友有事我帮，讲义气。比较符合。"
+    },
+    {
+      "question_num": 32,
+      "statement": "教学、培训或辅导他人",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 32 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 4,
+      "monologue": "教学培训——场上指导学弟学妹动作，我愿意。比较符合。"
+    },
+    {
+      "question_num": 33,
+      "statement": "倾听他人的困扰并提供支持",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 33 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 4,
+      "monologue": "倾听他人困扰——队里兄弟聊心事，我听着。比较符合。"
+    },
+    {
+      "question_num": 34,
+      "statement": "组织团队活动或志愿服务",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 34 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 5,
+      "monologue": "组织团队活动——群体核心，聚餐训练赛都是我张罗。非常符合。"
+    },
+    {
+      "question_num": 35,
+      "statement": "与人深入交流、建立信任关系",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 35 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 4,
+      "monologue": "深入交流建立信任——更衣室里的兄弟，信得过。比较符合。"
+    },
+    {
+      "question_num": 36,
+      "statement": "照顾病人、儿童或老年人",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 36 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 3,
+      "monologue": "照顾病人儿童老人——有心，但没怎么做过。居中。"
+    },
+    {
+      "question_num": 37,
+      "statement": "调解人际冲突、促进和谐",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 37 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 3,
+      "monologue": "调解冲突——队里吵过架，我劝过。居中。"
+    },
+    {
+      "question_num": 38,
+      "statement": "参与社区服务或公益活动",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 38 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 3,
+      "monologue": "社区公益——学校志愿去过几次。居中。"
+    },
+    {
+      "question_num": 39,
+      "statement": "在团体中扮演协调者角色",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 39 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 5,
+      "monologue": "团体协调者——场上场下都协调，队长气质。非常符合。"
+    },
+    {
+      "question_num": 40,
+      "statement": "向他人解释复杂的概念或流程",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 40 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "S"
+      ],
+      "score": 2,
+      "monologue": "解释复杂概念——让我讲战术可以，讲公式免谈。不太符合。"
+    },
+    {
+      "question_num": 41,
+      "statement": "领导团队或项目管理",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 41 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 5,
+      "monologue": "领导团队——场上队长，带队赢过不少比赛。非常符合。"
+    },
+    {
+      "question_num": 42,
+      "statement": "说服他人接受某个观点或产品",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 42 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 4,
+      "monologue": "说服他人——关键球说服教练信任我出手。比较符合。"
+    },
+    {
+      "question_num": 43,
+      "statement": "创业、销售或谈判",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 43 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 3,
+      "monologue": "创业销售谈判——没想那么多，先把球打好。居中。"
+    },
+    {
+      "question_num": 44,
+      "statement": "在竞争中争取胜利和成果",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 44 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 5,
+      "monologue": "竞争争取胜利——比赛就是为了赢。非常符合。"
+    },
+    {
+      "question_num": 45,
+      "statement": "发表演讲、组织活动或影响公众",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 45 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 4,
+      "monologue": "演讲影响公众——颁奖发言不怯场。比较符合。"
+    },
+    {
+      "question_num": 46,
+      "statement": "制定商业计划或营销策略",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 46 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 2,
+      "monologue": "商业计划营销——不太懂，也不装。不太符合。"
+    },
+    {
+      "question_num": 47,
+      "statement": "承担风险以追求更大回报",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 47 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 4,
+      "monologue": "承担风险——最后一攻敢要球，关键罚球我扛。比较符合。"
+    },
+    {
+      "question_num": 48,
+      "statement": "竞选学生干部或社团负责人",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 48 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 4,
+      "monologue": "竞选学生干部——班里人缘好，当过体育委员。比较符合。"
+    },
+    {
+      "question_num": 49,
+      "statement": "管理预算、资源或供应链",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 49 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 2,
+      "monologue": "管理预算——队费教练管，我不管账。不太符合。"
+    },
+    {
+      "question_num": 50,
+      "statement": "在众人面前自信地表达观点",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 50 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "E"
+      ],
+      "score": 5,
+      "monologue": "众人面前自信表达——全场都看你罚球，不怂。非常符合。"
+    },
+    {
+      "question_num": 51,
+      "statement": "整理数据、制作表格或档案",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 51 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 2,
+      "monologue": "整理数据表格——文化课表格能交就行。不太符合。"
+    },
+    {
+      "question_num": 52,
+      "statement": "按照明确流程完成任务",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 52 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 4,
+      "monologue": "按明确流程完成——训练计划天天执行，我能坚持。比较符合。"
+    },
+    {
+      "question_num": 53,
+      "statement": "处理账目、文件或审计工作",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 53 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 2,
+      "monologue": "处理账目文件——不擅长。不太符合。"
+    },
+    {
+      "question_num": 54,
+      "statement": "确保工作准确无误、井井有条",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 54 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 3,
+      "monologue": "确保准确井井有条——训练时整齐，宿舍可以乱点。居中。"
+    },
+    {
+      "question_num": 55,
+      "statement": "使用办公软件和信息系统处理事务",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 55 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 2,
+      "monologue": "办公软件信息系统——会交作业就行。不太符合。"
+    },
+    {
+      "question_num": 56,
+      "statement": "核对数字、检查细节、发现错误",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 56 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 2,
+      "monologue": "核对数字检查细节——数学弱，细节核对烦。不太符合。"
+    },
+    {
+      "question_num": 57,
+      "statement": "建立分类系统或数据库",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 57 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 3,
+      "monologue": "建立分类系统——装备自己知道放哪。居中。"
+    },
+    {
+      "question_num": 58,
+      "statement": "编写规范、手册或操作指南",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 58 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 4,
+      "monologue": "编写规范手册——训练规范我认，天天练。比较符合。"
+    },
+    {
+      "question_num": 59,
+      "statement": "管理日程、会议或行政事务",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 59 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 4,
+      "monologue": "管理日程会议——训练比赛日程背得熟。比较符合。"
+    },
+    {
+      "question_num": 60,
+      "statement": "按照清单逐项完成重复性工作",
+      "scenario_hint": "请结合你的学习与生活经历，想象第 60 题描述的活动情境，选择最符合你真实偏好的程度。",
+      "theme_tags": [
+        "C"
+      ],
+      "score": 4,
+      "monologue": "按清单逐项重复——折返跑、投篮训练，重复但我扛得住。比较符合。"
+    }
+  ]
+}

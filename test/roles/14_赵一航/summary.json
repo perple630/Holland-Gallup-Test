@@ -1,0 +1,38 @@
+{
+  "username": "role14_zhaoyihang",
+  "password": "role123456",
+  "display_name": "赵一航",
+  "label": "角色十四 · 高三体育特长生",
+  "user_id": "e579d898-ab2d-4afa-8b06-1f35ed8c8f64",
+  "generated_at": "2026-06-23T06:15:58.987869+00:00",
+  "holland_code": "ESR",
+  "holland_scores": {
+    "R": 36,
+    "I": 17,
+    "A": 25,
+    "S": 37,
+    "E": 38,
+    "C": 30
+  },
+  "gallup_domain": "影响力",
+  "gallup_top5": [
+    "追求",
+    "伯乐",
+    "交往",
+    "体谅",
+    "成就"
+  ],
+  "gallup_secondary_domain": "关系建立",
+  "careers": [
+    "销售总监",
+    "培训师",
+    "创业者",
+    "投资人",
+    "教育管理者",
+    "公益组织领导者",
+    "技术销售",
+    "产品演示专家"
+  ],
+  "tension": "你的 Gallup 主导领域（影响力）与 Holland 三码中的 E 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (影响力) aligns strongly with the E type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\14_赵一航"
+}

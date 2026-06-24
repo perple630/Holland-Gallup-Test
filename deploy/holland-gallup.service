@@ -1,0 +1,17 @@
+[Unit]
+Description=Holland-Gallup Assessment Platform Backend (FastAPI)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/srv/holland-gallup/backend
+Environment=PYTHONPATH=/srv/holland-gallup/backend
+EnvironmentFile=/srv/holland-gallup/deploy/.env
+ExecStart=/srv/holland-gallup/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8001
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

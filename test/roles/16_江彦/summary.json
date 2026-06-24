@@ -1,0 +1,38 @@
+{
+  "username": "role16_jiangyan",
+  "password": "role123456",
+  "display_name": "江彦",
+  "label": "角色十六 · 大二哲学系男生",
+  "user_id": "5b72b2a1-66ca-4ee0-b46b-ea6d4e33f57c",
+  "generated_at": "2026-06-23T09:35:06.371224+00:00",
+  "holland_code": "AIS",
+  "holland_scores": {
+    "R": 10,
+    "I": 37,
+    "A": 41,
+    "S": 24,
+    "E": 15,
+    "C": 13
+  },
+  "gallup_domain": "战略思维",
+  "gallup_top5": [
+    "思维",
+    "审慎",
+    "责任",
+    "个别",
+    "搜集"
+  ],
+  "gallup_secondary_domain": "执行力",
+  "careers": [
+    "概念设计师",
+    "品牌策略师",
+    "科学家",
+    "研究员",
+    "战略顾问",
+    "教育心理学家",
+    "用户研究员",
+    "艺术研究员"
+  ],
+  "tension": "你的 Gallup 主导领域（战略思维）与 Holland 三码中的 A 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (战略思维) aligns strongly with the A type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\16_江彦"
+}

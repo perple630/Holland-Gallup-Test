@@ -1,0 +1,61 @@
+{
+  "user_id": "425de76f-60e3-43cb-bdb5-5a4cebcf3335",
+  "username": "role13_zhouye",
+  "password": "role123456",
+  "display_name": "周野",
+  "label": "角色十三 · 高三理科男生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "RAE",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 39,
+      "I": 15,
+      "A": 39,
+      "S": 18,
+      "E": 28,
+      "C": 10
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 29,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "RAE",
+    "gallup_top5": [
+      "追求",
+      "竞争",
+      "行动",
+      "统率",
+      "完美"
+    ],
+    "gallup_domain": "影响力",
+    "gallup_secondary_domain": "关系建立",
+    "holland_scores": {
+      "R": 39,
+      "I": 15,
+      "A": 39,
+      "S": 18,
+      "E": 28,
+      "C": 10
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0
+    },
+    "holland_quality": {
+      "differentiation": 29,
+      "is_flat": false
+    }
+  }
+}

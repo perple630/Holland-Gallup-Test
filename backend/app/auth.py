@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Optional
+from typing import Optional, Iterable
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
@@ -46,16 +46,35 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    
+
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if user is None:
         raise credentials_exception
+    if not user.is_active:
+        raise HTTPException(status_code=403, detail="账号已停用")
     return user
 
 
+def require_roles(*roles: models.UserRole):
+    allowed = set(roles)
+
+    def checker(current_user: models.User = Depends(get_current_user)):
+        if current_user.role not in allowed:
+            raise HTTPException(status_code=403, detail="权限不足")
+        return current_user
+
+    return checker
+
+
 def require_teacher(current_user: models.User = Depends(get_current_user)):
-    if current_user.role != models.UserRole.teacher:
-        raise HTTPException(status_code=403, detail="Teacher role required")
+    if current_user.role not in (models.UserRole.teacher, models.UserRole.admin):
+        raise HTTPException(status_code=403, detail="需要教师或管理员权限")
+    return current_user
+
+
+def require_admin(current_user: models.User = Depends(get_current_user)):
+    if current_user.role != models.UserRole.admin:
+        raise HTTPException(status_code=403, detail="需要管理员权限")
     return current_user
 
 
@@ -69,3 +88,17 @@ def get_or_create_assessment(db: Session, user_id: str):
         db.commit()
         db.refresh(assessment)
     return assessment
+
+
+def build_token_response(user: models.User) -> dict:
+    access_token = create_access_token({"sub": user.id, "role": user.role.value})
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "role": user.role.value,
+        "user_id": user.id,
+        "username": user.username,
+        "display_name": user.display_name,
+        "profile_complete": bool(user.profile_complete),
+        "must_change_password": bool(user.must_change_password),
+    }

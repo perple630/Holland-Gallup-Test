@@ -1,0 +1,64 @@
+{
+  "user_id": "988b5bea-7ea5-476d-a23a-f8db17e0f4cb",
+  "username": "role03_chenwen",
+  "password": "role123456",
+  "display_name": "陈稳",
+  "label": "角色三 · 企业财务",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "CIS",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 18,
+      "I": 35,
+      "A": 15,
+      "S": 33,
+      "E": 25,
+      "C": 50
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 35,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "CIS",
+    "gallup_top5": [
+      "回顾",
+      "分析",
+      "专注",
+      "成就",
+      "公平"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "执行力",
+    "holland_scores": {
+      "R": 18,
+      "I": 35,
+      "A": 15,
+      "S": 33,
+      "E": 25,
+      "C": 50
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "dual_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0,
+      "dual_side_ratio": 1.0,
+      "themes_scored": 34
+    },
+    "holland_quality": {
+      "differentiation": 35,
+      "is_flat": false
+    }
+  }
+}

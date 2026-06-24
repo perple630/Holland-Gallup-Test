@@ -1,0 +1,1046 @@
+[
+  {
+    "career_name": "技术研发工程师",
+    "riasec_primary": "R",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "机械工程",
+      "电子工程",
+      "自动化",
+      "计算机科学",
+      "材料科学"
+    ],
+    "evidence_level": "C",
+    "description": "负责将技术方案转化为实际产品，包括设计原型、编写技术文档、调试设备、解决生产中的技术问题。"
+  },
+  {
+    "career_name": "数据工程师",
+    "riasec_primary": "R",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "数据科学",
+      "计算机科学",
+      "软件工程",
+      "统计学",
+      "信息系统"
+    ],
+    "evidence_level": "C",
+    "description": "搭建数据收集和存储系统，清洗原始数据，设计数据管道，确保分析团队能稳定获取高质量数据。"
+  },
+  {
+    "career_name": "法医技师",
+    "riasec_primary": "R",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "法医学",
+      "刑事科学技术",
+      "生物医学",
+      "生物技术"
+    ],
+    "evidence_level": "D",
+    "description": "在实验室对犯罪现场采集的物证进行检验分析，包括 DNA、指纹、血迹、毒物等，出具鉴定报告。"
+  },
+  {
+    "career_name": "技术研究员",
+    "riasec_primary": "R",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "应用物理",
+      "应用化学",
+      "生物技术",
+      "工程研究"
+    ],
+    "evidence_level": "C",
+    "description": "围绕特定技术课题开展实验、收集数据、撰写研究报告，推动新技术或新工艺从概念走向应用。"
+  },
+  {
+    "career_name": "项目经理",
+    "riasec_primary": "R",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "工程管理",
+      "项目管理",
+      "工商管理",
+      "工业工程"
+    ],
+    "evidence_level": "C",
+    "description": "定义项目范围、制定计划、管理预算与风险，协调团队按时交付成果。"
+  },
+  {
+    "career_name": "施工主管",
+    "riasec_primary": "R",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "土木工程",
+      "建筑工程",
+      "工程管理",
+      "安全工程"
+    ],
+    "evidence_level": "C",
+    "description": "在建筑工地监督施工进度与安全，协调工人班组，检查材料质量，解决现场技术问题。"
+  },
+  {
+    "career_name": "质量控制员",
+    "riasec_primary": "R",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "质量管理工程",
+      "工业工程",
+      "机械工程",
+      "标准化工程"
+    ],
+    "evidence_level": "D",
+    "description": "对产品或生产流程进行抽样检测，记录缺陷数据，分析问题原因，推动生产标准改进。"
+  },
+  {
+    "career_name": "设备运维经理",
+    "riasec_primary": "R",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "机械工程",
+      "电气工程",
+      "自动化",
+      "设备管理"
+    ],
+    "evidence_level": "D",
+    "description": "负责工厂或机房设备的日常保养、故障排查、维修计划制定，保障设备稳定运行。"
+  },
+  {
+    "career_name": "技术销售",
+    "riasec_primary": "R",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "市场营销",
+      "商务管理",
+      "机械工程",
+      "电子工程"
+    ],
+    "evidence_level": "D",
+    "description": "向企业客户介绍技术产品或解决方案，理解客户需求，编写技术方案，协助完成投标与签约。"
+  },
+  {
+    "career_name": "产品演示专家",
+    "riasec_primary": "R",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "市场营销",
+      "传播学",
+      "工业设计",
+      "戏剧影视"
+    ],
+    "evidence_level": "D",
+    "description": "为客户或展会观众现场演示产品功能，解答技术疑问，收集反馈并协助优化演示内容。"
+  },
+  {
+    "career_name": "创业技术合伙人",
+    "riasec_primary": "R",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "创业管理",
+      "工商管理",
+      "计算机科学",
+      "工程类"
+    ],
+    "evidence_level": "D",
+    "description": "与创业团队共同开发产品原型，搭建技术团队，评估技术路线，推动产品从 0 到 1。"
+  },
+  {
+    "career_name": "技术培训师",
+    "riasec_primary": "R",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "职业技术教育",
+      "机械工程",
+      "人力资源管理",
+      "教育学"
+    ],
+    "evidence_level": "D",
+    "description": "为企业或学校学员讲授设备操作、软件使用或工艺流程，设计实操练习并考核学习效果。"
+  },
+  {
+    "career_name": "设备维护顾问",
+    "riasec_primary": "R",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "机械工程",
+      "工业工程",
+      "设备管理",
+      "技术营销"
+    ],
+    "evidence_level": "D",
+    "description": "走访客户现场诊断设备问题，提供维护方案与备件建议，帮助客户延长设备使用寿命。"
+  },
+  {
+    "career_name": "运动教练",
+    "riasec_primary": "R",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "运动训练",
+      "体育教育",
+      "运动人体科学",
+      "康复治疗"
+    ],
+    "evidence_level": "C",
+    "description": "根据学员体能目标制定训练计划，示范动作、纠正姿势、记录训练数据并预防运动损伤。"
+  },
+  {
+    "career_name": "科学家",
+    "riasec_primary": "I",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "物理学",
+      "化学",
+      "生物学",
+      "数学",
+      "地球科学"
+    ],
+    "evidence_level": "C",
+    "description": "在高校、研究所或企业实验室围绕自然科学问题开展长期研究，发表学术论文并申请科研项目。"
+  },
+  {
+    "career_name": "研究员",
+    "riasec_primary": "I",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "各学科基础研究专业",
+      "统计学",
+      "研究方法学"
+    ],
+    "evidence_level": "C",
+    "description": "针对特定课题查阅文献、设计实验、分析数据并撰写报告，为决策或学术发展提供依据。"
+  },
+  {
+    "career_name": "战略顾问",
+    "riasec_primary": "I",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "管理学",
+      "经济学",
+      "运筹学",
+      "商业分析",
+      "政治学"
+    ],
+    "evidence_level": "C",
+    "description": "分析企业或机构的竞争环境与发展瓶颈，提出业务模式、市场进入或组织调整建议。"
+  },
+  {
+    "career_name": "数据科学家",
+    "riasec_primary": "I",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "数据科学",
+      "统计学",
+      "计算机科学",
+      "应用数学",
+      "机器学习"
+    ],
+    "evidence_level": "C",
+    "description": "从大量数据中提取规律，建立预测模型，用可视化方式呈现结论，支持业务决策。"
+  },
+  {
+    "career_name": "医学实验技师",
+    "riasec_primary": "I",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "医学检验技术",
+      "生物技术",
+      "生物科学",
+      "临床医学"
+    ],
+    "evidence_level": "C",
+    "description": "在医疗机构或科研实验室操作仪器，进行血液、组织、微生物等样本检测与记录。"
+  },
+  {
+    "career_name": "合规研究员",
+    "riasec_primary": "I",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "法学",
+      "审计学",
+      "金融学",
+      "风险管理",
+      "公共政策"
+    ],
+    "evidence_level": "D",
+    "description": "梳理行业法规与内部制度，评估业务操作的合规风险，撰写合规报告并提出整改建议。"
+  },
+  {
+    "career_name": "技术文档工程师",
+    "riasec_primary": "I",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "技术传播",
+      "英语",
+      "计算机科学",
+      "信息设计",
+      "工程类"
+    ],
+    "evidence_level": "D",
+    "description": "编写软件或硬件产品的用户手册、API 文档、安装指南，确保技术信息准确易懂。"
+  },
+  {
+    "career_name": "科学传播者",
+    "riasec_primary": "I",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "科学传播",
+      "新闻传播",
+      "教育学",
+      "生物学",
+      "物理学"
+    ],
+    "evidence_level": "D",
+    "description": "将复杂科学知识转化为科普文章、视频或展览内容，帮助公众理解最新科研成果。"
+  },
+  {
+    "career_name": "技术产品经理",
+    "riasec_primary": "I",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "产品设计",
+      "计算机科学",
+      "工商管理",
+      "心理学",
+      "工业设计"
+    ],
+    "evidence_level": "C",
+    "description": "把用户需求转化为产品功能清单，协调设计师与工程师，推动产品迭代上线。"
+  },
+  {
+    "career_name": "行业分析师",
+    "riasec_primary": "I",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "经济学",
+      "金融学",
+      "商业分析",
+      "统计学",
+      "产业经济学"
+    ],
+    "evidence_level": "C",
+    "description": "收集行业数据、跟踪市场动态、撰写行业研究报告，为投资或企业战略提供参考。"
+  },
+  {
+    "career_name": "医学教育者",
+    "riasec_primary": "I",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "临床医学",
+      "护理学",
+      "医学教育",
+      "公共卫生",
+      "健康传播"
+    ],
+    "evidence_level": "D",
+    "description": "在医学院或医院开展临床教学，设计病例讨论与技能培训，培养医学生或住院医师。"
+  },
+  {
+    "career_name": "研究导师",
+    "riasec_primary": "I",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "各学科博士/研究生专业",
+      "教育学",
+      "高等教育学"
+    ],
+    "evidence_level": "D",
+    "description": "指导研究生或年轻研究人员的课题设计、实验方法与论文写作，帮助他们完成学位或项目。"
+  },
+  {
+    "career_name": "科普作家",
+    "riasec_primary": "I",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "科学传播",
+      "中文",
+      "新闻传播",
+      "生物学",
+      "物理学"
+    ],
+    "evidence_level": "D",
+    "description": "为杂志、出版社或新媒体撰写科学主题文章，把专业知识转化为大众可读的故事。"
+  },
+  {
+    "career_name": "概念设计师",
+    "riasec_primary": "A",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "工业设计",
+      "概念艺术",
+      "视觉传达",
+      "数字媒体艺术"
+    ],
+    "evidence_level": "C",
+    "description": "根据项目需求绘制角色、场景或产品的初步视觉方案，为后续制作团队确定美术方向。"
+  },
+  {
+    "career_name": "艺术研究员",
+    "riasec_primary": "A",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "艺术史",
+      "艺术理论",
+      "文化遗产",
+      "博物馆学",
+      "美术学"
+    ],
+    "evidence_level": "D",
+    "description": "研究艺术作品的历史背景、风格流派与社会影响，撰写论文并参与展览策划。"
+  },
+  {
+    "career_name": "品牌策略师",
+    "riasec_primary": "A",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "市场营销",
+      "广告学",
+      "设计管理",
+      "传播学",
+      "品牌管理"
+    ],
+    "evidence_level": "C",
+    "description": "分析目标用户与竞争品牌，制定品牌定位、视觉调性与传播策略，提升品牌认知度。"
+  },
+  {
+    "career_name": "出版编辑",
+    "riasec_primary": "A",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "编辑出版学",
+      "汉语言文学",
+      "新闻传播",
+      "英语",
+      "数字出版"
+    ],
+    "evidence_level": "C",
+    "description": "审读书稿、协调作者修改、把控出版流程，确保图书内容质量与出版时间。"
+  },
+  {
+    "career_name": "展览执行",
+    "riasec_primary": "A",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "会展经济与管理",
+      "艺术管理",
+      "博物馆学",
+      "设计学"
+    ],
+    "evidence_level": "D",
+    "description": "负责艺术展、博览会或活动的现场搭建、展品运输、布展协调与观众服务。"
+  },
+  {
+    "career_name": "舞台监督",
+    "riasec_primary": "A",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "戏剧管理",
+      "舞台技术",
+      "广播电视编导",
+      "艺术管理"
+    ],
+    "evidence_level": "D",
+    "description": "在演出期间协调演员、灯光、音响、道具各环节，确保演出流程顺利进行。"
+  },
+  {
+    "career_name": "创意总监",
+    "riasec_primary": "A",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "广告学",
+      "视觉传达",
+      "设计管理",
+      "市场营销",
+      "传播学"
+    ],
+    "evidence_level": "C",
+    "description": "领导创意团队完成广告、设计或影视项目，把控创意方向并与客户沟通确认方案。"
+  },
+  {
+    "career_name": "品牌公关",
+    "riasec_primary": "A",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "公共关系",
+      "广告学",
+      "传播学",
+      "市场营销",
+      "新闻学"
+    ],
+    "evidence_level": "C",
+    "description": "策划品牌活动与媒体传播，处理舆情，维护企业与公众之间的良好关系。"
+  },
+  {
+    "career_name": "艺术经纪人",
+    "riasec_primary": "A",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "艺术管理",
+      "文化产业管理",
+      "工商管理",
+      "艺术史"
+    ],
+    "evidence_level": "D",
+    "description": "为艺术家寻找展览、出版或收藏机会，洽谈合同，管理作品销售与客户关系。"
+  },
+  {
+    "career_name": "艺术治疗师",
+    "riasec_primary": "A",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "艺术治疗",
+      "心理学",
+      "音乐治疗",
+      "社会工作",
+      "美术学"
+    ],
+    "evidence_level": "D",
+    "description": "通过绘画、音乐或戏剧等艺术活动帮助来访者表达情绪、缓解压力、促进康复。"
+  },
+  {
+    "career_name": "创意写作教师",
+    "riasec_primary": "A",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "创意写作",
+      "汉语言文学",
+      "教育学",
+      "戏剧影视文学"
+    ],
+    "evidence_level": "D",
+    "description": "教授小说、诗歌或剧本写作技巧，批改学员作品并组织读书会或写作工作坊。"
+  },
+  {
+    "career_name": "社区艺术组织者",
+    "riasec_primary": "A",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "艺术管理",
+      "社会工作",
+      "公共艺术",
+      "文化产业管理"
+    ],
+    "evidence_level": "D",
+    "description": "在社区策划公共艺术项目、工作坊或文化节，邀请居民参与并促进社区交流。"
+  },
+  {
+    "career_name": "教育心理学家",
+    "riasec_primary": "S",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "心理学",
+      "教育心理学",
+      "应用心理学",
+      "特殊教育"
+    ],
+    "evidence_level": "C",
+    "description": "运用心理学理论评估学生的学习困难、情绪问题或发展障碍，提供干预建议。"
+  },
+  {
+    "career_name": "用户研究员",
+    "riasec_primary": "S",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "人机交互",
+      "心理学",
+      "社会学",
+      "设计学",
+      "信息科学"
+    ],
+    "evidence_level": "C",
+    "description": "通过访谈、问卷、可用性测试等方法了解用户需求，为产品设计提供依据。"
+  },
+  {
+    "career_name": "课程设计师",
+    "riasec_primary": "S",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "教育学",
+      "教学设计",
+      "教育技术",
+      "课程与教学论"
+    ],
+    "evidence_level": "C",
+    "description": "根据教学目标设计课程大纲、学习活动与评估方式，开发教材或线上课程内容。"
+  },
+  {
+    "career_name": "学校行政",
+    "riasec_primary": "S",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "教育管理",
+      "公共管理",
+      "行政管理",
+      "教育学"
+    ],
+    "evidence_level": "D",
+    "description": "负责学校日常事务管理，包括招生、排课、学籍、活动组织与家校沟通。"
+  },
+  {
+    "career_name": "护士",
+    "riasec_primary": "S",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "护理学",
+      "助产学",
+      "康复护理",
+      "老年护理"
+    ],
+    "evidence_level": "C",
+    "description": "在医疗机构执行医嘱，进行护理操作、病情观察、健康宣教，协助患者康复。"
+  },
+  {
+    "career_name": "社工案例管理者",
+    "riasec_primary": "S",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "社会工作",
+      "社会学",
+      "心理学",
+      "公共管理"
+    ],
+    "evidence_level": "C",
+    "description": "为困难群体链接社会资源，制定服务计划，定期跟进个案进展并评估服务效果。"
+  },
+  {
+    "career_name": "培训师",
+    "riasec_primary": "S",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "教育学",
+      "人力资源管理",
+      "心理学",
+      "企业管理",
+      "传播学"
+    ],
+    "evidence_level": "C",
+    "description": "根据企业或机构需求设计培训课程，讲授知识技能，组织演练并进行效果评估。"
+  },
+  {
+    "career_name": "教育管理者",
+    "riasec_primary": "S",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "教育管理",
+      "公共管理",
+      "工商管理",
+      "高等教育学"
+    ],
+    "evidence_level": "D",
+    "description": "负责学校或教育机构运营，制定发展规划，管理教师团队与教学质量。"
+  },
+  {
+    "career_name": "公益组织领导者",
+    "riasec_primary": "S",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "社会工作",
+      "公共管理",
+      "非营利组织管理",
+      "社会学"
+    ],
+    "evidence_level": "D",
+    "description": "确立公益项目目标，筹集资源，组建团队，监督项目执行与社会影响。"
+  },
+  {
+    "career_name": "心理咨询师",
+    "riasec_primary": "S",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "心理学",
+      "应用心理学",
+      "临床心理学",
+      "社会工作"
+    ],
+    "evidence_level": "C",
+    "description": "通过面谈或测评帮助来访者理解情绪与行为问题，制定辅导计划并持续跟进。"
+  },
+  {
+    "career_name": "教师",
+    "riasec_primary": "S",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "师范类专业",
+      "学科教育",
+      "教育学",
+      "特殊教育"
+    ],
+    "evidence_level": "C",
+    "description": "在中小学或培训机构备课、授课、批改作业，关注学生成长并与家长沟通。"
+  },
+  {
+    "career_name": "辅导员",
+    "riasec_primary": "S",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "教育学",
+      "心理学",
+      "社会工作",
+      "思想政治教育"
+    ],
+    "evidence_level": "D",
+    "description": "在大中小学为学生提供学业、心理、职业规划等方面的咨询与日常事务指导。"
+  },
+  {
+    "career_name": "HR 伙伴",
+    "riasec_primary": "S",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "人力资源管理",
+      "心理学",
+      "劳动关系",
+      "工商管理"
+    ],
+    "evidence_level": "C",
+    "description": "协助业务部门进行招聘、员工关系、绩效沟通与团队建设，支持人才发展。"
+  },
+  {
+    "career_name": "管理顾问",
+    "riasec_primary": "E",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "工商管理",
+      "管理学",
+      "经济学",
+      "运筹学",
+      "商业分析"
+    ],
+    "evidence_level": "C",
+    "description": "进入企业诊断管理问题，优化流程、组织架构或绩效体系，推动方案落地。"
+  },
+  {
+    "career_name": "投资分析师",
+    "riasec_primary": "E",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "金融学",
+      "经济学",
+      "统计学",
+      "数学",
+      "金融工程"
+    ],
+    "evidence_level": "C",
+    "description": "研究股票、债券或项目价值，建立财务模型，撰写投资报告并提出买卖建议。"
+  },
+  {
+    "career_name": "商业战略家",
+    "riasec_primary": "E",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "战略管理",
+      "经济学",
+      "商业分析",
+      "管理学",
+      "国际关系"
+    ],
+    "evidence_level": "D",
+    "description": "分析市场趋势与竞争格局，为企业制定长期发展方向与资源配置策略。"
+  },
+  {
+    "career_name": "运营总监",
+    "riasec_primary": "E",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "工商管理",
+      "运营管理",
+      "供应链管理",
+      "工业工程"
+    ],
+    "evidence_level": "C",
+    "description": "统筹企业日常运营，制定关键指标，优化流程，协调各部门完成经营目标。"
+  },
+  {
+    "career_name": "项目经理",
+    "riasec_primary": "E",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "项目管理",
+      "工程管理",
+      "工商管理",
+      "信息管理"
+    ],
+    "evidence_level": "C",
+    "description": "定义项目范围、制定计划、管理预算与风险，协调团队按时交付成果。"
+  },
+  {
+    "career_name": "企业高管",
+    "riasec_primary": "E",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "工商管理",
+      "EMBA",
+      "管理学",
+      "经济学",
+      "领导力发展"
+    ],
+    "evidence_level": "D",
+    "description": "制定公司战略、领导高层团队、对经营业绩负责，并代表公司对外沟通。"
+  },
+  {
+    "career_name": "创业者",
+    "riasec_primary": "E",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "创业管理",
+      "工商管理",
+      "市场营销",
+      "计算机科学",
+      "设计学"
+    ],
+    "evidence_level": "D",
+    "description": "识别市场机会，组建团队，开发产品或服务，获取融资并推动企业成长。"
+  },
+  {
+    "career_name": "销售总监",
+    "riasec_primary": "E",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "市场营销",
+      "工商管理",
+      "销售管理",
+      "心理学",
+      "传播学"
+    ],
+    "evidence_level": "C",
+    "description": "制定销售目标与策略，管理销售团队，开拓大客户并监控销售业绩。"
+  },
+  {
+    "career_name": "投资人",
+    "riasec_primary": "E",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "金融学",
+      "经济学",
+      "工商管理",
+      "会计学",
+      "数学"
+    ],
+    "evidence_level": "D",
+    "description": "评估创业项目或资产价值，进行投资决策，投后跟踪并帮助被投企业发展。"
+  },
+  {
+    "career_name": "政治家",
+    "riasec_primary": "E",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "政治学",
+      "公共管理",
+      "法学",
+      "国际关系",
+      "社会学"
+    ],
+    "evidence_level": "D",
+    "description": "参与公共政策制定，代表选民利益，推动立法或社会议题，组织竞选与公共活动。"
+  },
+  {
+    "career_name": "客户关系总监",
+    "riasec_primary": "E",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "市场营销",
+      "客户关系管理",
+      "工商管理",
+      "心理学"
+    ],
+    "evidence_level": "D",
+    "description": "维护企业重要客户关系，处理重大投诉，推动续约与深度合作。"
+  },
+  {
+    "career_name": "HRD",
+    "riasec_primary": "E",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "人力资源管理",
+      "组织行为学",
+      "工商管理",
+      "心理学"
+    ],
+    "evidence_level": "C",
+    "description": "制定人力资源战略，统筹招聘、薪酬、绩效、组织发展与企业文化建设。"
+  },
+  {
+    "career_name": "组织发展顾问",
+    "riasec_primary": "E",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "组织发展",
+      "人力资源管理",
+      "心理学",
+      "工商管理"
+    ],
+    "evidence_level": "D",
+    "description": "诊断组织能力与人才结构，设计培训、轮岗或变革项目，提升组织效能。"
+  },
+  {
+    "career_name": "财务分析师",
+    "riasec_primary": "C",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "财务管理",
+      "会计学",
+      "金融学",
+      "经济学",
+      "统计学"
+    ],
+    "evidence_level": "C",
+    "description": "编制预算、分析财务报表、监控经营指标，为管理层提供财务决策支持。"
+  },
+  {
+    "career_name": "精算师",
+    "riasec_primary": "C",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "精算学",
+      "统计学",
+      "数学",
+      "金融学",
+      "保险学"
+    ],
+    "evidence_level": "C",
+    "description": "运用统计与金融模型评估保险、养老金等长期风险，计算保费与准备金。"
+  },
+  {
+    "career_name": "数据架构师",
+    "riasec_primary": "C",
+    "cs_domain": "Strategic Thinking",
+    "related_majors": [
+      "计算机科学",
+      "数据工程",
+      "信息系统",
+      "软件工程"
+    ],
+    "evidence_level": "C",
+    "description": "设计企业数据仓库、数据流与数据标准，确保数据系统安全、可扩展、易维护。"
+  },
+  {
+    "career_name": "会计师",
+    "riasec_primary": "C",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "会计学",
+      "财务管理",
+      "审计学",
+      "税务",
+      "CPA 方向"
+    ],
+    "evidence_level": "C",
+    "description": "记录企业财务交易，编制报表，处理税务申报，确保账目符合会计准则。"
+  },
+  {
+    "career_name": "审计师",
+    "riasec_primary": "C",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "审计学",
+      "会计学",
+      "财务管理",
+      "法学",
+      "内部审计"
+    ],
+    "evidence_level": "C",
+    "description": "独立检查企业财务报表与内部控制，发现异常情况并出具审计意见。"
+  },
+  {
+    "career_name": "行政经理",
+    "riasec_primary": "C",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "行政管理",
+      "公共管理",
+      "工商管理",
+      "人力资源管理"
+    ],
+    "evidence_level": "D",
+    "description": "管理办公环境、行政流程、采购与后勤事务，支持公司日常高效运转。"
+  },
+  {
+    "career_name": "运营专员",
+    "riasec_primary": "C",
+    "cs_domain": "Executing",
+    "related_majors": [
+      "工商管理",
+      "运营管理",
+      "行政管理",
+      "供应链管理"
+    ],
+    "evidence_level": "D",
+    "description": "执行日常运营流程，跟进订单、库存或客户问题，收集数据并反馈优化建议。"
+  },
+  {
+    "career_name": "销售运营经理",
+    "riasec_primary": "C",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "市场营销",
+      "工商管理",
+      "运营管理",
+      "数据分析"
+    ],
+    "evidence_level": "D",
+    "description": "制定销售流程与工具，分析销售数据，支持销售团队达成业绩目标。"
+  },
+  {
+    "career_name": "采购经理",
+    "riasec_primary": "C",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "供应链管理",
+      "工商管理",
+      "物流管理",
+      "国际贸易"
+    ],
+    "evidence_level": "D",
+    "description": "根据企业需求筛选供应商，谈判价格与合同，管理采购订单与供应链风险。"
+  },
+  {
+    "career_name": "商务拓展",
+    "riasec_primary": "C",
+    "cs_domain": "Influencing",
+    "related_majors": [
+      "工商管理",
+      "市场营销",
+      "国际贸易",
+      "商务管理"
+    ],
+    "evidence_level": "D",
+    "description": "寻找潜在合作机会，洽谈合作协议，开拓新市场或新客户资源。"
+  },
+  {
+    "career_name": "客户服务经理",
+    "riasec_primary": "C",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "市场营销",
+      "工商管理",
+      "心理学",
+      "客户关系管理"
+    ],
+    "evidence_level": "D",
+    "description": "管理客服团队，处理客户投诉与反馈，优化服务流程以提升客户满意度。"
+  },
+  {
+    "career_name": "HR 运营",
+    "riasec_primary": "C",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "人力资源管理",
+      "劳动关系",
+      "工商管理",
+      "行政管理"
+    ],
+    "evidence_level": "D",
+    "description": "执行招聘、入离职、考勤、薪酬核算等人力资源日常事务，确保流程合规。"
+  },
+  {
+    "career_name": "员工关系专员",
+    "riasec_primary": "C",
+    "cs_domain": "Relationship Building",
+    "related_majors": [
+      "人力资源管理",
+      "劳动关系",
+      "心理学",
+      "法学"
+    ],
+    "evidence_level": "D",
+    "description": "处理员工咨询、劳动纠纷与福利事务，组织员工活动并维护劳动关系。"
+  }
+]

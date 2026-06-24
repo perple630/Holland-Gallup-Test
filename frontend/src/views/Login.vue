@@ -3,26 +3,15 @@
     <div class="card login-card">
       <h1>RIASEC × CliftonStrengths</h1>
       <p class="subtitle">双维度职业兴趣与优势测评平台</p>
-      
-      <div class="role-toggle">
-        <button 
-          :class="{ active: role === 'student' }" 
-          @click="role = 'student'"
-        >学生登录</button>
-        <button 
-          :class="{ active: role === 'teacher' }" 
-          @click="role = 'teacher'"
-        >老师登录</button>
-      </div>
 
       <form @submit.prevent="handleLogin">
         <div class="form-group">
           <label>用户名</label>
-          <input v-model="username" type="text" placeholder="请输入用户名" required />
+          <input v-model="username" type="text" placeholder="请输入用户名" required autocomplete="username" />
         </div>
         <div class="form-group">
           <label>密码</label>
-          <input v-model="password" type="password" placeholder="请输入密码" required />
+          <input v-model="password" type="password" placeholder="请输入密码" required autocomplete="current-password" />
         </div>
         <button type="submit" :disabled="loading" class="login-btn">
           {{ loading ? '登录中...' : '登录' }}
@@ -30,11 +19,13 @@
       </form>
 
       <p v-if="error" class="error">{{ error }}</p>
-      
+
+      <div class="links">
+        <router-link to="/register">学生注册</router-link>
+      </div>
+
       <div class="demo-hint">
-        <p>演示账号：</p>
-        <p>学生：student / student123</p>
-        <p>老师：teacher / teacher123</p>
+        <p>首次使用请注册；教师/管理员账号由系统分配。</p>
       </div>
     </div>
   </div>
@@ -49,7 +40,6 @@ import { login } from '../api'
 const router = useRouter()
 const auth = useAuthStore()
 
-const role = ref('student')
 const username = ref('')
 const password = ref('')
 const loading = ref(false)
@@ -62,10 +52,13 @@ async function handleLogin() {
     const res = await login({
       username: username.value,
       password: password.value,
-      role: role.value
     })
     auth.setAuth(res)
-    if (res.role === 'teacher') {
+    if (res.must_change_password) {
+      router.push('/change-password')
+    } else if (res.role === 'admin') {
+      router.push('/admin')
+    } else if (res.role === 'teacher') {
       router.push('/teacher')
     } else {
       router.push('/student')
@@ -95,23 +88,6 @@ async function handleLogin() {
 .subtitle {
   color: #666;
   margin-bottom: 24px;
-}
-
-.role-toggle {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.role-toggle button {
-  flex: 1;
-  background: #e5e7eb;
-  color: #374151;
-}
-
-.role-toggle button.active {
-  background: #2563eb;
-  color: white;
 }
 
 .form-group {
@@ -147,15 +123,21 @@ async function handleLogin() {
   font-size: 14px;
 }
 
+.links {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.links a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
 .demo-hint {
   margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid #e5e7eb;
   font-size: 13px;
   color: #6b7280;
-}
-
-.demo-hint p {
-  margin: 4px 0;
 }
 </style>

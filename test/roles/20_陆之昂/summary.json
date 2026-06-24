@@ -1,0 +1,38 @@
+{
+  "username": "role20_luzhiang",
+  "password": "role123456",
+  "display_name": "陆之昂",
+  "label": "角色二十 · 大三视觉传达男生",
+  "user_id": "64484ab1-fc33-4265-8133-f93e754b60d7",
+  "generated_at": "2026-06-23T05:26:17.563195+00:00",
+  "holland_code": "AIS",
+  "holland_scores": {
+    "R": 11,
+    "I": 18,
+    "A": 50,
+    "S": 16,
+    "E": 15,
+    "C": 12
+  },
+  "gallup_domain": "战略思维",
+  "gallup_top5": [
+    "思维",
+    "前瞻",
+    "追求",
+    "积极",
+    "分析"
+  ],
+  "gallup_secondary_domain": "影响力",
+  "careers": [
+    "概念设计师",
+    "品牌策略师",
+    "科学家",
+    "研究员",
+    "战略顾问",
+    "教育心理学家",
+    "用户研究员",
+    "艺术研究员"
+  ],
+  "tension": "你的 Gallup 主导领域（战略思维）与 Holland 三码中的 A 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (战略思维) aligns strongly with the A type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\20_陆之昂"
+}

@@ -1,26 +1,27 @@
 <template>
   <div class="container">
-    <h1>老师工作台</h1>
-    <p class="subtitle">查看学生测评完成情况，生成双版本解读报告</p>
+    <h1>{{ auth.isAdmin ? '学生测评管理' : '老师工作台' }}</h1>
+    <p class="subtitle">查看学生测评完成情况，管理学生账号，生成双版本解读报告</p>
 
     <div class="card filters">
       <div class="filter-row">
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="搜索姓名或用户名 / Search name or username"
+          placeholder="搜索姓名或用户名"
           class="search-input"
         />
         <select v-model="filterStatus" class="filter-select">
-          <option value="all">全部 / All</option>
-          <option value="completed">已完成 / Completed</option>
-          <option value="incomplete">未完成 / Incomplete</option>
+          <option value="all">全部</option>
+          <option value="completed">已完成</option>
+          <option value="incomplete">未完成</option>
         </select>
         <select v-model="filterCode" class="filter-select">
-          <option value="all">全部 Holland 代码 / All codes</option>
+          <option value="all">全部 Holland 代码</option>
           <option v-for="code in hollandCodes" :key="code" :value="code">{{ code }}</option>
         </select>
-        <button class="btn-secondary" @click="exportCSV">导出 CSV / Export</button>
+        <button @click="showCreate = true">新建学生</button>
+        <button class="btn-secondary" @click="exportCSV">导出 CSV</button>
       </div>
     </div>
 
@@ -33,9 +34,10 @@
           <tr>
             <th>学生姓名</th>
             <th>用户名</th>
+            <th>学校/年级</th>
             <th>Holland</th>
             <th>Gallup</th>
-            <th>测评结果</th>
+            <th>状态</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -43,6 +45,7 @@
           <tr v-for="student in filteredStudents" :key="student.id">
             <td>{{ student.display_name || student.username }}</td>
             <td>{{ student.username }}</td>
+            <td>{{ student.school || '—' }} {{ student.grade || '' }}</td>
             <td>
               <span :class="['status', student.holland_done ? 'done' : 'pending']">
                 {{ student.holland_done ? '已完成' : '未完成' }}
@@ -54,23 +57,58 @@
                 {{ student.gallup_done ? '已完成' : '未完成' }}
               </span>
               <span v-if="student.gallup_domain" class="code">{{ student.gallup_domain }}</span>
-              <span v-if="student.gallup_secondary_domain" class="code">{{ student.gallup_secondary_domain }}</span>
             </td>
             <td>
               <span v-if="student.holland_done && student.gallup_done" class="status done">可生成报告</span>
               <span v-else class="status pending">待完成</span>
+              <span v-if="!student.is_active" class="status pending">已停用</span>
             </td>
-            <td>
-              <button 
-                v-if="student.holland_done && student.gallup_done" 
+            <td class="action-cell">
+              <button
+                v-if="student.holland_done && student.gallup_done"
                 @click="viewReport(student.id)"
-              >
-                查看报告
+              >报告</button>
+              <button class="btn-secondary btn-sm" @click="resetPassword(student)">重置密码</button>
+              <button class="btn-secondary btn-sm" @click="toggleStudent(student)">
+                {{ student.is_active ? '停用' : '启用' }}
               </button>
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div v-if="showCreate" class="modal-mask" @click.self="showCreate = false">
+      <div class="modal card">
+        <h3>新建学生账号</h3>
+        <div class="form-group">
+          <label>用户名 *</label>
+          <input v-model="createForm.username" />
+        </div>
+        <div class="form-group">
+          <label>初始密码（留空自动生成）</label>
+          <input v-model="createForm.password" type="password" placeholder="需含大小写/数字/符号" />
+        </div>
+        <div class="form-group">
+          <label>姓名</label>
+          <input v-model="createForm.display_name" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>学校</label>
+            <input v-model="createForm.school" />
+          </div>
+          <div class="form-group">
+            <label>年级</label>
+            <input v-model="createForm.grade" />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button @click="handleCreate">创建</button>
+          <button class="btn-secondary" @click="showCreate = false">取消</button>
+        </div>
+        <p v-if="createMsg" class="create-msg">{{ createMsg }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -78,14 +116,32 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { getTeacherStudents } from '../api'
+import { useAuthStore } from '../stores/auth'
+import {
+  getTeacherStudents,
+  createStudent,
+  resetStudentPassword,
+  deactivateStudent,
+  activateStudent,
+} from '../api'
 
 const router = useRouter()
+const auth = useAuthStore()
 const students = ref([])
 const loading = ref(true)
 const searchQuery = ref('')
 const filterStatus = ref('all')
 const filterCode = ref('all')
+const showCreate = ref(false)
+const createMsg = ref('')
+const createForm = ref({
+  username: '',
+  password: '',
+  display_name: '',
+  school: '',
+  grade: '',
+  class_name: '',
+})
 
 onMounted(async () => {
   try {
@@ -133,15 +189,17 @@ function viewReport(studentId) {
 }
 
 function exportCSV() {
-  const headers = ['姓名', '用户名', 'Holland完成', 'Holland代码', 'Gallup完成', 'Gallup主要领域', 'Gallup次要领域']
+  const headers = ['姓名', '用户名', '学校', '年级', 'Holland完成', 'Holland代码', 'Gallup完成', 'Gallup领域', '账号状态']
   const rows = filteredStudents.value.map(s => [
     s.display_name || s.username,
     s.username,
+    s.school || '',
+    s.grade || '',
     s.holland_done ? '是' : '否',
     s.holland_code || '',
     s.gallup_done ? '是' : '否',
     s.gallup_domain || '',
-    s.gallup_secondary_domain || ''
+    s.is_active ? '正常' : '停用',
   ])
   const csv = [headers, ...rows].map(r => r.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n')
   const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' })
@@ -153,6 +211,49 @@ function exportCSV() {
   a.click()
   document.body.removeChild(a)
   URL.revokeObjectURL(url)
+}
+
+async function handleCreate() {
+  createMsg.value = ''
+  try {
+    const payload = { ...createForm.value }
+    if (!payload.password) delete payload.password
+    const user = await createStudent(payload)
+    let msg = `已创建 ${user.username}`
+    if (!createForm.value.password) {
+      const res = await resetStudentPassword(user.id)
+      msg += `，初始密码：${res.new_password}（需首次登录修改）`
+    }
+    createMsg.value = msg
+    students.value = await getTeacherStudents()
+    createForm.value = { username: '', password: '', display_name: '', school: '', grade: '', class_name: '' }
+  } catch (err) {
+    createMsg.value = err.response?.data?.detail || '创建失败'
+  }
+}
+
+async function resetPassword(student) {
+  const custom = prompt(`为 ${student.username} 设置新密码（留空自动生成）`, '')
+  if (custom === null) return
+  try {
+    const res = await resetStudentPassword(student.id, custom || null)
+    alert(`密码已重置\n用户名：${res.username}\n新密码：${res.new_password}`)
+  } catch (err) {
+    alert(err.response?.data?.detail || '重置失败')
+  }
+}
+
+async function toggleStudent(student) {
+  try {
+    if (student.is_active) {
+      await deactivateStudent(student.id)
+    } else {
+      await activateStudent(student.id)
+    }
+    students.value = await getTeacherStudents()
+  } catch (err) {
+    alert(err.response?.data?.detail || '操作失败')
+  }
 }
 </script>
 
@@ -239,4 +340,34 @@ function exportCSV() {
 .btn-secondary {
   background: #6b7280;
 }
+
+.action-cell {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.modal-mask {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+
+.modal { width: 100%; max-width: 480px; }
+
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; margin-bottom: 4px; font-size: 14px; }
+.form-group input {
+  width: 100%; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.modal-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+.create-msg { margin-top: 10px; font-size: 13px; color: #16a34a; }
 </style>

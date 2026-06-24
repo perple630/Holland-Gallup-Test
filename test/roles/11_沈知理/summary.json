@@ -1,0 +1,38 @@
+{
+  "username": "role11_shenzhili",
+  "password": "role123456",
+  "display_name": "沈知理",
+  "label": "角色十一 · 高二理科女生",
+  "user_id": "3c3b297c-0564-41f3-aead-08e83ba79406",
+  "generated_at": "2026-06-23T09:34:56.210624+00:00",
+  "holland_code": "ICR",
+  "holland_scores": {
+    "R": 32,
+    "I": 48,
+    "A": 21,
+    "S": 23,
+    "E": 15,
+    "C": 41
+  },
+  "gallup_domain": "战略思维",
+  "gallup_top5": [
+    "战略",
+    "分析",
+    "搜集",
+    "成就",
+    "学习"
+  ],
+  "gallup_secondary_domain": "执行力",
+  "careers": [
+    "科学家",
+    "研究员",
+    "战略顾问",
+    "财务分析师",
+    "精算师",
+    "数据架构师",
+    "技术研发工程师",
+    "数据工程师"
+  ],
+  "tension": "你的 Gallup 主导领域（战略思维）与 Holland 三码中的 I 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (战略思维) aligns strongly with the I type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\11_沈知理"
+}

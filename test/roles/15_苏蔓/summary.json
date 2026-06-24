@@ -1,0 +1,38 @@
+{
+  "username": "role15_suman",
+  "password": "role123456",
+  "display_name": "苏蔓",
+  "label": "角色十五 · 大二人力资源女生",
+  "user_id": "187644e4-0d1a-4e95-92aa-53d3549fdb52",
+  "generated_at": "2026-06-23T09:35:04.799479+00:00",
+  "holland_code": "SEC",
+  "holland_scores": {
+    "R": 14,
+    "I": 18,
+    "A": 34,
+    "S": 49,
+    "E": 44,
+    "C": 38
+  },
+  "gallup_domain": "影响力",
+  "gallup_top5": [
+    "统率",
+    "沟通",
+    "自信",
+    "和谐",
+    "个别"
+  ],
+  "gallup_secondary_domain": "关系建立",
+  "careers": [
+    "培训师",
+    "销售总监",
+    "教育管理者",
+    "公益组织领导者",
+    "创业者",
+    "投资人",
+    "销售运营经理",
+    "采购经理"
+  ],
+  "tension": "你的 Gallup 主导领域（影响力）与 Holland 三码中的 E 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (影响力) aligns strongly with the E type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\15_苏蔓"
+}

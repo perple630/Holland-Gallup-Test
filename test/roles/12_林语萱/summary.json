@@ -1,0 +1,38 @@
+{
+  "username": "role12_linyuxuan",
+  "password": "role123456",
+  "display_name": "林语萱",
+  "label": "角色十二 · 高二文科女生",
+  "user_id": "3ecc7349-9f12-4e4d-8fea-d4646f7d917a",
+  "generated_at": "2026-06-23T08:32:21.363446+00:00",
+  "holland_code": "ASE",
+  "holland_scores": {
+    "R": 13,
+    "I": 24,
+    "A": 45,
+    "S": 45,
+    "E": 31,
+    "C": 21
+  },
+  "gallup_domain": "影响力",
+  "gallup_top5": [
+    "沟通",
+    "积极",
+    "学习",
+    "自信",
+    "个别"
+  ],
+  "gallup_secondary_domain": "关系建立",
+  "careers": [
+    "创意总监",
+    "品牌公关",
+    "培训师",
+    "销售总监",
+    "艺术经纪人",
+    "教育管理者",
+    "公益组织领导者",
+    "创业者"
+  ],
+  "tension": "你的 Gallup 主导领域（影响力）与 Holland 三码中的 E 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (影响力) aligns strongly with the E type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\12_林语萱"
+}

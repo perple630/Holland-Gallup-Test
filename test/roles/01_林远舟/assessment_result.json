@@ -1,0 +1,59 @@
+{
+  "user_id": "13dc0992-5f24-4975-aae1-fc0a750828c2",
+  "username": "role01_linyuanzhou",
+  "display_name": "林远舟",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "RIC",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 40,
+      "I": 40,
+      "A": 15,
+      "S": 20,
+      "E": 16,
+      "C": 40
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 25,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "RIC",
+    "gallup_top5": [
+      "思维",
+      "分析",
+      "排难",
+      "专注",
+      "学习"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "执行力",
+    "holland_scores": {
+      "R": 40,
+      "I": 40,
+      "A": 15,
+      "S": 20,
+      "E": 16,
+      "C": 40
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 117,
+      "b_side_covered": 0,
+      "a_side_ratio": 0.65,
+      "b_side_ratio": 0.0
+    },
+    "holland_quality": {
+      "differentiation": 25,
+      "is_flat": false
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "user_id": "187644e4-0d1a-4e95-92aa-53d3549fdb52",
+  "username": "role15_suman",
+  "password": "role123456",
+  "display_name": "苏蔓",
+  "label": "角色十五 · 大二人力资源女生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "SEC",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 14,
+      "I": 18,
+      "A": 34,
+      "S": 49,
+      "E": 44,
+      "C": 38
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 35,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "SEC",
+    "gallup_top5": [
+      "统率",
+      "沟通",
+      "自信",
+      "和谐",
+      "个别"
+    ],
+    "gallup_domain": "影响力",
+    "gallup_secondary_domain": "关系建立",
+    "holland_scores": {
+      "R": 14,
+      "I": 18,
+      "A": 34,
+      "S": 49,
+      "E": 44,
+      "C": 38
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "dual_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0,
+      "dual_side_ratio": 1.0,
+      "themes_scored": 34
+    },
+    "holland_quality": {
+      "differentiation": 35,
+      "is_flat": false
+    }
+  }
+}

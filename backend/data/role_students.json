@@ -1,0 +1,126 @@
+{
+  "users": [
+    {
+      "id": "13dc0992-5f24-4975-aae1-fc0a750828c2",
+      "username": "role01_linyuanzhou",
+      "display_name": "林远舟",
+      "role": "student",
+      "password_hash": "$2b$12$tF5bWiBTJ2veU0.97rgpe.xooewbkE/uEwjA1GlvPLe/q/rmNW.A6",
+      "created_at": "2026-06-23 04:24:02"
+    },
+    {
+      "id": "3c1ee34e-5786-4eb9-90ee-4ea371e73693",
+      "username": "role02_suxiaolu",
+      "display_name": "苏小鹿",
+      "role": "student",
+      "password_hash": "$2b$12$NqEP6uZZikE01j2ksMnq1uY0TeVU.Q5j6xsUWy.ehia/z97vB.DPy",
+      "created_at": "2026-06-23 05:08:22"
+    },
+    {
+      "id": "425de76f-60e3-43cb-bdb5-5a4cebcf3335",
+      "username": "role13_zhouye",
+      "display_name": "周野",
+      "role": "student",
+      "password_hash": "$2b$12$Pc7CbIThH76NEbsRw7Fh7u6wDKKqsoU2juDL3FPqHXYmkVBI6Hkty",
+      "created_at": "2026-06-23 05:29:08"
+    },
+    {
+      "id": "e579d898-ab2d-4afa-8b06-1f35ed8c8f64",
+      "username": "role14_zhaoyihang",
+      "display_name": "赵一航",
+      "role": "student",
+      "password_hash": "$2b$12$4wqPvDX5.wkPQYvx5Sdxo.bgAVOT44OdMlp9N4fS8rq.y3pUV2iXu",
+      "created_at": "2026-06-23 06:15:58"
+    },
+    {
+      "id": "64484ab1-fc33-4265-8133-f93e754b60d7",
+      "username": "role20_luzhiang",
+      "display_name": "陆之昂",
+      "role": "student",
+      "password_hash": "$2b$12$yO44smBhse4A6l2VmHl77eVSdWZPn5oqHov1FeqLezjYUnYmOMmXi",
+      "created_at": "2026-06-23 05:26:16"
+    }
+  ],
+  "assessments": [
+    {
+      "id": "f43c9442-8e9c-4b65-8d5f-5ab20e7e7c12",
+      "user_id": "13dc0992-5f24-4975-aae1-fc0a750828c2",
+      "holland_done": 1,
+      "holland_scores": "{\"R\": 40, \"I\": 40, \"A\": 15, \"S\": 20, \"E\": 16, \"C\": 40}",
+      "holland_code": "RIC",
+      "gallup_done": 1,
+      "gallup_top5": "[\"\\u601d\\u7ef4\", \"\\u5206\\u6790\", \"\\u6392\\u96be\", \"\\u4e13\\u6ce8\", \"\\u5b66\\u4e60\"]",
+      "gallup_top10": "[\"\\u601d\\u7ef4\", \"\\u5206\\u6790\", \"\\u6392\\u96be\", \"\\u4e13\\u6ce8\", \"\\u5b66\\u4e60\", \"\\u7eaa\\u5f8b\", \"\\u516c\\u5e73\", \"\\u8d23\\u4efb\", \"\\u4fe1\\u4ef0\", \"\\u5ba1\\u614e\"]",
+      "gallup_domain": "战略思维",
+      "gallup_secondary_domain": "执行力",
+      "gallup_scores": "{\"\\u6210\\u5c31\": -7.0, \"\\u7edf\\u7b79\": 1.0, \"\\u4fe1\\u4ef0\": 2.0, \"\\u516c\\u5e73\": 3.0, \"\\u5ba1\\u614e\": 2.0, \"\\u7eaa\\u5f8b\": 4.0, \"\\u4e13\\u6ce8\": 6.0, \"\\u8d23\\u4efb\": 3.0, \"\\u6392\\u96be\": 8.0, \"\\u884c\\u52a8\": -3.0, \"\\u7edf\\u7387\": -6.0, \"\\u6c9f\\u901a\": -4.0, \"\\u7ade\\u4e89\": -5.0, \"\\u5b8c\\u7f8e\": 0.0, \"\\u81ea\\u4fe1\": -3.0, \"\\u8ffd\\u6c42\": -2.0, \"\\u53d6\\u60a6\": -3.0, \"\\u9002\\u5e94\": -1.0, \"\\u5173\\u8054\": -3.0, \"\\u4f2f\\u4e50\": -11.0, \"\\u4f53\\u8c05\": -6.0, \"\\u548c\\u8c10\": -1.0, \"\\u5305\\u5bb9\": -1.0, \"\\u4e2a\\u522b\": 1.0, \"\\u79ef\\u6781\": -3.0, \"\\u4ea4\\u5f80\": -1.0, \"\\u5206\\u6790\": 9.0, \"\\u56de\\u987e\": 0.0, \"\\u524d\\u77bb\": -6.0, \"\\u7406\\u5ff5\": 0.0, \"\\u641c\\u96c6\": 1.0, \"\\u601d\\u7ef4\": 11.0, \"\\u5b66\\u4e60\": 5.0, \"\\u6218\\u7565\": 2.0}",
+      "status": "{\"holland_quality\": {\"differentiation\": 25, \"is_flat\": false}, \"holland_used_fallback\": false, \"gallup_coverage\": {\"total_questions\": 180, \"a_side_covered\": 117, \"b_side_covered\": 0, \"a_side_ratio\": 0.65, \"b_side_ratio\": 0.0}}",
+      "completed_at": "2026-06-23 04:24:03.145861",
+      "updated_at": "2026-06-23 04:24:03"
+    },
+    {
+      "id": "f1a9edda-1d18-400a-abbc-29c0e0243e25",
+      "user_id": "3c1ee34e-5786-4eb9-90ee-4ea371e73693",
+      "holland_done": 1,
+      "holland_scores": "{\"R\": 15, \"I\": 24, \"A\": 47, \"S\": 27, \"E\": 19, \"C\": 15}",
+      "holland_code": "ASI",
+      "gallup_done": 1,
+      "gallup_top5": "[\"\\u524d\\u77bb\", \"\\u601d\\u7ef4\", \"\\u6210\\u5c31\", \"\\u8ffd\\u6c42\", \"\\u6c9f\\u901a\"]",
+      "gallup_top10": "[\"\\u524d\\u77bb\", \"\\u601d\\u7ef4\", \"\\u6210\\u5c31\", \"\\u8ffd\\u6c42\", \"\\u6c9f\\u901a\", \"\\u79ef\\u6781\", \"\\u5206\\u6790\", \"\\u5b8c\\u7f8e\", \"\\u4e2a\\u522b\", \"\\u6218\\u7565\"]",
+      "gallup_domain": "战略思维",
+      "gallup_secondary_domain": "影响力",
+      "gallup_scores": "{\"\\u6210\\u5c31\": 5.0, \"\\u7edf\\u7b79\": -4.0, \"\\u4fe1\\u4ef0\": 0.0, \"\\u516c\\u5e73\": -1.0, \"\\u5ba1\\u614e\": -1.0, \"\\u7eaa\\u5f8b\": -1.0, \"\\u4e13\\u6ce8\": -6.0, \"\\u8d23\\u4efb\": -3.0, \"\\u6392\\u96be\": -7.0, \"\\u884c\\u52a8\": 1.0, \"\\u7edf\\u7387\": -6.0, \"\\u6c9f\\u901a\": 4.0, \"\\u7ade\\u4e89\": -6.0, \"\\u5b8c\\u7f8e\": 3.0, \"\\u81ea\\u4fe1\": -2.0, \"\\u8ffd\\u6c42\": 5.0, \"\\u53d6\\u60a6\": 1.0, \"\\u9002\\u5e94\": -4.0, \"\\u5173\\u8054\": -1.0, \"\\u4f2f\\u4e50\": 1.0, \"\\u4f53\\u8c05\": -4.0, \"\\u548c\\u8c10\": 0.0, \"\\u5305\\u5bb9\": 0.0, \"\\u4e2a\\u522b\": 2.0, \"\\u79ef\\u6781\": 4.0, \"\\u4ea4\\u5f80\": -2.0, \"\\u5206\\u6790\": 4.0, \"\\u56de\\u987e\": 0.0, \"\\u524d\\u77bb\": 12.0, \"\\u7406\\u5ff5\": 0.0, \"\\u641c\\u96c6\": -1.0, \"\\u601d\\u7ef4\": 12.0, \"\\u5b66\\u4e60\": 1.0, \"\\u6218\\u7565\": 2.0}",
+      "status": "{\"holland_quality\": {\"differentiation\": 32, \"is_flat\": false}, \"holland_used_fallback\": false, \"gallup_coverage\": {\"total_questions\": 180, \"a_side_covered\": 180, \"b_side_covered\": 180, \"a_side_ratio\": 1.0, \"b_side_ratio\": 1.0}}",
+      "completed_at": "2026-06-23 05:22:23.289242",
+      "updated_at": "2026-06-23 05:22:23"
+    },
+    {
+      "id": "6f8cfb13-88ca-4f52-9b83-4ce2f2100887",
+      "user_id": "425de76f-60e3-43cb-bdb5-5a4cebcf3335",
+      "holland_done": 1,
+      "holland_scores": "{\"R\": 39, \"I\": 15, \"A\": 39, \"S\": 18, \"E\": 28, \"C\": 10}",
+      "holland_code": "RAE",
+      "gallup_done": 1,
+      "gallup_top5": "[\"\\u8ffd\\u6c42\", \"\\u7ade\\u4e89\", \"\\u884c\\u52a8\", \"\\u7edf\\u7387\", \"\\u5b8c\\u7f8e\"]",
+      "gallup_top10": "[\"\\u8ffd\\u6c42\", \"\\u7ade\\u4e89\", \"\\u884c\\u52a8\", \"\\u7edf\\u7387\", \"\\u5b8c\\u7f8e\", \"\\u81ea\\u4fe1\", \"\\u6210\\u5c31\", \"\\u5173\\u8054\", \"\\u4e2a\\u522b\", \"\\u524d\\u77bb\"]",
+      "gallup_domain": "影响力",
+      "gallup_secondary_domain": "关系建立",
+      "gallup_scores": "{\"\\u6210\\u5c31\": 2.0, \"\\u7edf\\u7b79\": -3.0, \"\\u4fe1\\u4ef0\": 0.0, \"\\u516c\\u5e73\": -3.0, \"\\u5ba1\\u614e\": -2.0, \"\\u7eaa\\u5f8b\": -5.0, \"\\u4e13\\u6ce8\": -6.0, \"\\u8d23\\u4efb\": -3.0, \"\\u6392\\u96be\": -2.0, \"\\u884c\\u52a8\": 6.0, \"\\u7edf\\u7387\": 5.0, \"\\u6c9f\\u901a\": 0.0, \"\\u7ade\\u4e89\": 9.0, \"\\u5b8c\\u7f8e\": 5.0, \"\\u81ea\\u4fe1\": 3.0, \"\\u8ffd\\u6c42\": 44.0, \"\\u53d6\\u60a6\": 0.0, \"\\u9002\\u5e94\": -25.0, \"\\u5173\\u8054\": 2.0, \"\\u4f2f\\u4e50\": -14.0, \"\\u4f53\\u8c05\": 0.0, \"\\u548c\\u8c10\": -1.0, \"\\u5305\\u5bb9\": -6.0, \"\\u4e2a\\u522b\": 2.0, \"\\u79ef\\u6781\": 0.0, \"\\u4ea4\\u5f80\": -9.0, \"\\u5206\\u6790\": -5.0, \"\\u56de\\u987e\": -6.0, \"\\u524d\\u77bb\": 2.0, \"\\u7406\\u5ff5\": 1.0, \"\\u641c\\u96c6\": -2.0, \"\\u601d\\u7ef4\": 0.0, \"\\u5b66\\u4e60\": -8.0, \"\\u6218\\u7565\": -3.0}",
+      "status": "{\"holland_quality\": {\"differentiation\": 29, \"is_flat\": false}, \"holland_used_fallback\": false, \"gallup_coverage\": {\"total_questions\": 180, \"a_side_covered\": 180, \"b_side_covered\": 180, \"a_side_ratio\": 1.0, \"b_side_ratio\": 1.0}}",
+      "completed_at": "2026-06-23 05:29:08.600685",
+      "updated_at": "2026-06-23 05:29:08"
+    },
+    {
+      "id": "fddd3b67-7e9e-42dc-904c-9c0939187ff4",
+      "user_id": "64484ab1-fc33-4265-8133-f93e754b60d7",
+      "holland_done": 1,
+      "holland_scores": "{\"R\": 11, \"I\": 18, \"A\": 50, \"S\": 16, \"E\": 15, \"C\": 12}",
+      "holland_code": "AIS",
+      "gallup_done": 1,
+      "gallup_top5": "[\"\\u601d\\u7ef4\", \"\\u524d\\u77bb\", \"\\u8ffd\\u6c42\", \"\\u79ef\\u6781\", \"\\u5206\\u6790\"]",
+      "gallup_top10": "[\"\\u601d\\u7ef4\", \"\\u524d\\u77bb\", \"\\u8ffd\\u6c42\", \"\\u79ef\\u6781\", \"\\u5206\\u6790\", \"\\u7edf\\u7387\", \"\\u5b8c\\u7f8e\", \"\\u53d6\\u60a6\", \"\\u4e2a\\u522b\", \"\\u884c\\u52a8\"]",
+      "gallup_domain": "战略思维",
+      "gallup_secondary_domain": "影响力",
+      "gallup_scores": "{\"\\u6210\\u5c31\": -1.0, \"\\u7edf\\u7b79\": -3.0, \"\\u4fe1\\u4ef0\": 1.0, \"\\u516c\\u5e73\": 0.0, \"\\u5ba1\\u614e\": -2.0, \"\\u7eaa\\u5f8b\": -2.0, \"\\u4e13\\u6ce8\": -6.0, \"\\u8d23\\u4efb\": -3.0, \"\\u6392\\u96be\": -2.0, \"\\u884c\\u52a8\": 2.0, \"\\u7edf\\u7387\": 3.0, \"\\u6c9f\\u901a\": -2.0, \"\\u7ade\\u4e89\": -2.0, \"\\u5b8c\\u7f8e\": 3.0, \"\\u81ea\\u4fe1\": -2.0, \"\\u8ffd\\u6c42\": 5.0, \"\\u53d6\\u60a6\": 3.0, \"\\u9002\\u5e94\": 1.0, \"\\u5173\\u8054\": 1.0, \"\\u4f2f\\u4e50\": -14.0, \"\\u4f53\\u8c05\": -2.0, \"\\u548c\\u8c10\": -1.0, \"\\u5305\\u5bb9\": -5.0, \"\\u4e2a\\u522b\": 3.0, \"\\u79ef\\u6781\": 4.0, \"\\u4ea4\\u5f80\": -7.0, \"\\u5206\\u6790\": 4.0, \"\\u56de\\u987e\": -2.0, \"\\u524d\\u77bb\": 7.0, \"\\u7406\\u5ff5\": 0.0, \"\\u641c\\u96c6\": -1.0, \"\\u601d\\u7ef4\": 12.0, \"\\u5b66\\u4e60\": 0.0, \"\\u6218\\u7565\": 0.0}",
+      "status": "{\"holland_quality\": {\"differentiation\": 39, \"is_flat\": false}, \"holland_used_fallback\": false, \"gallup_coverage\": {\"total_questions\": 180, \"a_side_covered\": 180, \"b_side_covered\": 180, \"a_side_ratio\": 1.0, \"b_side_ratio\": 1.0}}",
+      "completed_at": "2026-06-23 05:26:17.225586",
+      "updated_at": "2026-06-23 05:26:17"
+    },
+    {
+      "id": "f697b561-1e68-4586-a472-3b152b9537fe",
+      "user_id": "e579d898-ab2d-4afa-8b06-1f35ed8c8f64",
+      "holland_done": 1,
+      "holland_scores": "{\"R\": 36, \"I\": 17, \"A\": 25, \"S\": 37, \"E\": 38, \"C\": 30}",
+      "holland_code": "ESR",
+      "gallup_done": 1,
+      "gallup_top5": "[\"\\u8ffd\\u6c42\", \"\\u4f2f\\u4e50\", \"\\u4ea4\\u5f80\", \"\\u4f53\\u8c05\", \"\\u6210\\u5c31\"]",
+      "gallup_top10": "[\"\\u8ffd\\u6c42\", \"\\u4f2f\\u4e50\", \"\\u4ea4\\u5f80\", \"\\u4f53\\u8c05\", \"\\u6210\\u5c31\", \"\\u884c\\u52a8\", \"\\u7ade\\u4e89\", \"\\u5173\\u8054\", \"\\u81ea\\u4fe1\", \"\\u5305\\u5bb9\"]",
+      "gallup_domain": "影响力",
+      "gallup_secondary_domain": "关系建立",
+      "gallup_scores": "{\"\\u6210\\u5c31\": 5.0, \"\\u7edf\\u7b79\": -4.0, \"\\u4fe1\\u4ef0\": 0.0, \"\\u516c\\u5e73\": -1.0, \"\\u5ba1\\u614e\": -3.0, \"\\u7eaa\\u5f8b\": -3.0, \"\\u4e13\\u6ce8\": -1.0, \"\\u8d23\\u4efb\": -2.0, \"\\u6392\\u96be\": -4.0, \"\\u884c\\u52a8\": 5.0, \"\\u7edf\\u7387\": 1.0, \"\\u6c9f\\u901a\": -1.0, \"\\u7ade\\u4e89\": 5.0, \"\\u5b8c\\u7f8e\": -2.0, \"\\u81ea\\u4fe1\": 3.0, \"\\u8ffd\\u6c42\": 49.0, \"\\u53d6\\u60a6\": -2.0, \"\\u9002\\u5e94\": -43.0, \"\\u5173\\u8054\": 4.0, \"\\u4f2f\\u4e50\": 13.0, \"\\u4f53\\u8c05\": 7.0, \"\\u548c\\u8c10\": -2.0, \"\\u5305\\u5bb9\": 3.0, \"\\u4e2a\\u522b\": -2.0, \"\\u79ef\\u6781\": 2.0, \"\\u4ea4\\u5f80\": 11.0, \"\\u5206\\u6790\": -6.0, \"\\u56de\\u987e\": 0.0, \"\\u524d\\u77bb\": -8.0, \"\\u7406\\u5ff5\": 0.0, \"\\u641c\\u96c6\": -2.0, \"\\u601d\\u7ef4\": -17.0, \"\\u5b66\\u4e60\": -8.0, \"\\u6218\\u7565\": -1.0}",
+      "status": "{\"holland_quality\": {\"differentiation\": 21, \"is_flat\": false}, \"holland_used_fallback\": false, \"gallup_coverage\": {\"total_questions\": 180, \"a_side_covered\": 180, \"b_side_covered\": 180, \"a_side_ratio\": 1.0, \"b_side_ratio\": 1.0}}",
+      "completed_at": "2026-06-23 06:15:58.645966",
+      "updated_at": "2026-06-23 06:15:58"
+    }
+  ]
+}

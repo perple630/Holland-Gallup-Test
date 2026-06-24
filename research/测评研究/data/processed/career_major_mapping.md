@@ -3,6 +3,7 @@
 > **版本 / Version**: 1.0  
 > **定位 / Positioning**: 供在线测评工具报告生成模块调用的参考映射表。  
 > **性质 / Nature**: 基于 RIASEC × CliftonStrengths 领域交叉矩阵的理论推导，非官方职业数据库，仅用于职业探索参考。  
+> **矩阵范畴层 / Domain Layer**: 24 格职业范畴定义见 `riasec_gallup_matrix_24_domains.md`；本表为 L2 具体职业落地层。  
 > **证据等级 / Evidence Level**: 全部为 **C/D** 级（理论推导/专家经验，未经验证）。
 
 ---
@@ -127,6 +128,7 @@
 - `../../05-deliverables/practical-assessment-framework.md` — 双维度测评落地框架，含 RIASEC × CliftonStrengths 交叉矩阵
 - `../../06-website/website-implementation-plan.md` — 在线测评工具实施计划
 - `mapping-strengths-riasec.md` — CliftonStrengths 与 RIASEC 映射表
+- `onet_41_basic_interests_riasec.md` — O*NET 41 个基本兴趣领域与 RIASEC / Holland 三码对照（完整列表）
 
 ---
 

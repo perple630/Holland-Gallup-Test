@@ -1,0 +1,38 @@
+{
+  "username": "role13_zhouye",
+  "password": "role123456",
+  "display_name": "周野",
+  "label": "角色十三 · 高三理科男生",
+  "user_id": "425de76f-60e3-43cb-bdb5-5a4cebcf3335",
+  "generated_at": "2026-06-23T05:29:08.971783+00:00",
+  "holland_code": "RAE",
+  "holland_scores": {
+    "R": 39,
+    "I": 15,
+    "A": 39,
+    "S": 18,
+    "E": 28,
+    "C": 10
+  },
+  "gallup_domain": "影响力",
+  "gallup_top5": [
+    "追求",
+    "竞争",
+    "行动",
+    "统率",
+    "完美"
+  ],
+  "gallup_secondary_domain": "关系建立",
+  "careers": [
+    "创意总监",
+    "品牌公关",
+    "销售总监",
+    "技术销售",
+    "产品演示专家",
+    "创业技术合伙人",
+    "艺术经纪人",
+    "创业者"
+  ],
+  "tension": "你的 Gallup 主导领域（影响力）与 Holland 三码中的 E 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (影响力) aligns strongly with the E type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\13_周野"
+}

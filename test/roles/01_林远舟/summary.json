@@ -1,0 +1,33 @@
+{
+  "role": "角色一 · 工程结构师",
+  "display_name": "林远舟",
+  "user_id": "13dc0992-5f24-4975-aae1-fc0a750828c2",
+  "username": "role01_linyuanzhou",
+  "holland_code": "RIC",
+  "holland_scores": {
+    "R": 40,
+    "I": 40,
+    "A": 15,
+    "S": 20,
+    "E": 16,
+    "C": 40
+  },
+  "gallup_domain": "战略思维",
+  "gallup_top5": [
+    "思维",
+    "分析",
+    "排难",
+    "专注",
+    "学习"
+  ],
+  "gallup_secondary_domain": "执行力",
+  "careers": [
+    "技术研发工程师",
+    "数据工程师",
+    "技术研究员",
+    "科学家",
+    "研究员"
+  ],
+  "tension": "你的 Gallup 主导领域（战略思维）与 Holland 三码中的 I 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (战略思维) aligns strongly with the I type in your Holland code, giving you both internal motivation and natural ability in related directions.",
+  "output_dir": "D:\\UESR\\Desktop\\Holland-Gallup-Test\\test\\roles\\01_林远舟"
+}

@@ -1,0 +1,61 @@
+{
+  "user_id": "64484ab1-fc33-4265-8133-f93e754b60d7",
+  "username": "role20_luzhiang",
+  "password": "role123456",
+  "display_name": "陆之昂",
+  "label": "角色二十 · 大三视觉传达男生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "AIS",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 11,
+      "I": 18,
+      "A": 50,
+      "S": 16,
+      "E": 15,
+      "C": 12
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 39,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "AIS",
+    "gallup_top5": [
+      "思维",
+      "前瞻",
+      "追求",
+      "积极",
+      "分析"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "影响力",
+    "holland_scores": {
+      "R": 11,
+      "I": 18,
+      "A": 50,
+      "S": 16,
+      "E": 15,
+      "C": 12
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0
+    },
+    "holland_quality": {
+      "differentiation": 39,
+      "is_flat": false
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "user_id": "3c3b297c-0564-41f3-aead-08e83ba79406",
+  "username": "role11_shenzhili",
+  "password": "role123456",
+  "display_name": "沈知理",
+  "label": "角色十一 · 高二理科女生",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": false,
+    "holland_code": "ICR",
+    "gallup_top5": [],
+    "gallup_domain": null,
+    "gallup_secondary_domain": null,
+    "holland_scores": {
+      "R": 32,
+      "I": 48,
+      "A": 21,
+      "S": 23,
+      "E": 15,
+      "C": 41
+    },
+    "gallup_coverage": null,
+    "holland_quality": {
+      "differentiation": 33,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "ICR",
+    "gallup_top5": [
+      "战略",
+      "分析",
+      "搜集",
+      "成就",
+      "学习"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "执行力",
+    "holland_scores": {
+      "R": 32,
+      "I": 48,
+      "A": 21,
+      "S": 23,
+      "E": 15,
+      "C": 41
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "dual_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0,
+      "dual_side_ratio": 1.0,
+      "themes_scored": 34
+    },
+    "holland_quality": {
+      "differentiation": 33,
+      "is_flat": false
+    }
+  }
+}

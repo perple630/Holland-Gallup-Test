@@ -44,45 +44,68 @@ def calculate_gallup(
     choice: -2=very B, -1=somewhat B, 0=neutral, 1=somewhat A, 2=very A
     a_side_map: question_num -> A-side themes (choice added)
     b_side_map: question_num -> B-side themes (choice subtracted)
-    """
-    scores = {theme: 0.0 for theme in THEME_DOMAINS.keys()}
 
-    # Track coverage and heuristic quality
+    计分说明：
+    - 原始分 raw_scores：A 侧主题 += choice，B 侧主题 -= choice
+    - 归一化分 normalized_scores：按各主题在题目中的出现次数取均值，减少「题量多的主题」偏差
+    - Top 5/10 与领域判定基于归一化分
+    """
+    raw_scores = {theme: 0.0 for theme in THEME_DOMAINS.keys()}
+    theme_exposure = {theme: 0 for theme in THEME_DOMAINS.keys()}
+
     total_questions = len(answers)
     covered_b = 0
     covered_a = 0
+    dual_covered = 0
 
     for ans in answers:
         qn = ans["question_num"]
         choice = ans["choice"]
-        if a_side_map.get(qn):
+        a_themes = a_side_map.get(qn) or []
+        b_themes = b_side_map.get(qn) or []
+        if a_themes:
             covered_a += 1
-        if b_side_map.get(qn):
+        if b_themes:
             covered_b += 1
-        for theme in a_side_map.get(qn, []):
-            scores[theme] += choice
-        for theme in b_side_map.get(qn, []):
-            # B-side statement represents the theme
-            scores[theme] -= choice
+        if a_themes and b_themes:
+            dual_covered += 1
 
-    sorted_themes = sorted(scores.items(), key=lambda x: -x[1])
+        for theme in a_themes:
+            raw_scores[theme] += choice
+            theme_exposure[theme] += 1
+        for theme in b_themes:
+            raw_scores[theme] -= choice
+            theme_exposure[theme] += 1
+
+    normalized_scores = {}
+    for theme, raw in raw_scores.items():
+        exp = theme_exposure[theme]
+        normalized_scores[theme] = round(raw / exp, 4) if exp > 0 else 0.0
+
+    sorted_themes = sorted(normalized_scores.items(), key=lambda x: -x[1])
     top5 = [t for t, _ in sorted_themes[:5]]
     top10 = [t for t, _ in sorted_themes[:10]]
 
-    # Domain distribution using Top 10 themes weighted by rank
-    # This makes domain determination more stable than simple Top-5 count
     domain_count = defaultdict(float)
     for idx, t in enumerate(top10):
-        weight = 1.0 / (idx + 1)  # rank 1 = 1.0, rank 2 = 0.5, ...
+        weight = 1.0 / (idx + 1)
         domain_count[THEME_DOMAINS[t]] += weight
 
-    # Tie-breaking: prefer domain with most raw-score contribution from all 34 themes
-    ranked_domains = sorted(domain_count.items(), key=lambda x: (-x[1], -_domain_raw_score(x[0], scores)))
+    ranked_domains = sorted(
+        domain_count.items(),
+        key=lambda x: (-x[1], -_domain_raw_score(x[0], normalized_scores)),
+    )
     dominant_domain = ranked_domains[0][0]
     secondary_domain = ranked_domains[1][0] if len(ranked_domains) > 1 else None
 
+    # 领域归属置信度：第一名与第二名加权差距
+    domain_margin = 0.0
+    if len(ranked_domains) >= 2:
+        domain_margin = round(ranked_domains[0][1] - ranked_domains[1][1], 3)
+
     return {
-        "scores": scores,
+        "scores": raw_scores,
+        "normalized_scores": normalized_scores,
         "top5": top5,
         "top10": top10,
         "domain": DOMAIN_ZH[dominant_domain],
@@ -90,13 +113,17 @@ def calculate_gallup(
         "secondary_domain": DOMAIN_ZH[secondary_domain] if secondary_domain else None,
         "secondary_domain_en": secondary_domain,
         "domain_distribution": {DOMAIN_ZH[k]: round(v, 2) for k, v in domain_count.items()},
+        "domain_margin": domain_margin,
         "coverage": {
             "total_questions": total_questions,
             "a_side_covered": covered_a,
             "b_side_covered": covered_b,
+            "dual_side_covered": dual_covered,
             "a_side_ratio": round(covered_a / total_questions, 3) if total_questions else 0,
             "b_side_ratio": round(covered_b / total_questions, 3) if total_questions else 0,
-        }
+            "dual_side_ratio": round(dual_covered / total_questions, 3) if total_questions else 0,
+            "themes_scored": sum(1 for e in theme_exposure.values() if e > 0),
+        },
     }
 
 

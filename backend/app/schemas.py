@@ -21,6 +21,7 @@ class QuestionOut(BaseModel):
 class UserRole(str, Enum):
     student = "student"
     teacher = "teacher"
+    admin = "admin"
 
 
 class UserBase(BaseModel):
@@ -29,12 +30,80 @@ class UserBase(BaseModel):
     role: UserRole
 
 
-class UserCreate(UserBase):
+class UserCreate(BaseModel):
+    username: str
+    password: Optional[str] = None
+    display_name: Optional[str] = None
+    email: Optional[str] = None
+    grade: Optional[str] = None
+    class_name: Optional[str] = None
+    school: Optional[str] = None
+    phone: Optional[str] = None
+
+
+class StudentRegister(BaseModel):
+    username: str
     password: str
+    display_name: Optional[str] = None
+    email: Optional[str] = None
+    grade: Optional[str] = None
+    class_name: Optional[str] = None
+    school: Optional[str] = None
+    phone: Optional[str] = None
+
+
+class AdminUserCreate(UserCreate):
+    role: UserRole = UserRole.student
+
+
+class UserUpdate(BaseModel):
+    display_name: Optional[str] = None
+    email: Optional[str] = None
+    grade: Optional[str] = None
+    class_name: Optional[str] = None
+    school: Optional[str] = None
+    phone: Optional[str] = None
+    career_note: Optional[str] = None
+    is_active: Optional[bool] = None
+    role: Optional[UserRole] = None
+
+
+class ProfileUpdate(BaseModel):
+    display_name: Optional[str] = None
+    email: Optional[str] = None
+    grade: Optional[str] = None
+    class_name: Optional[str] = None
+    school: Optional[str] = None
+    phone: Optional[str] = None
+    career_note: Optional[str] = None
+
+
+class ChangePasswordRequest(BaseModel):
+    old_password: str
+    new_password: str
+
+
+class ResetPasswordRequest(BaseModel):
+    new_password: Optional[str] = None
+
+
+class ResetPasswordResponse(BaseModel):
+    username: str
+    new_password: str
+    must_change_password: bool = True
 
 
 class UserOut(UserBase):
     id: str
+    email: Optional[str] = None
+    grade: Optional[str] = None
+    class_name: Optional[str] = None
+    school: Optional[str] = None
+    phone: Optional[str] = None
+    career_note: Optional[str] = None
+    profile_complete: bool = False
+    must_change_password: bool = False
+    is_active: bool = True
     created_at: datetime
 
     class Config:
@@ -46,13 +115,15 @@ class Token(BaseModel):
     token_type: str = "bearer"
     role: UserRole
     user_id: str
+    username: str
     display_name: Optional[str] = None
+    profile_complete: bool = False
+    must_change_password: bool = False
 
 
 class LoginRequest(BaseModel):
     username: str
     password: str
-    role: UserRole
 
 
 class HollandAnswerItem(BaseModel):
@@ -77,8 +148,11 @@ class GallupCoverage(BaseModel):
     total_questions: int
     a_side_covered: int
     b_side_covered: int
+    dual_side_covered: Optional[int] = None
     a_side_ratio: float
     b_side_ratio: float
+    dual_side_ratio: Optional[float] = None
+    themes_scored: Optional[int] = None
 
 
 class HollandQuality(BaseModel):
@@ -119,11 +193,28 @@ class StudentListItem(BaseModel):
     id: str
     username: str
     display_name: Optional[str]
+    email: Optional[str] = None
+    grade: Optional[str] = None
+    class_name: Optional[str] = None
+    school: Optional[str] = None
+    phone: Optional[str] = None
+    profile_complete: bool = False
+    is_active: bool = True
     holland_done: bool
     gallup_done: bool
     holland_code: Optional[str]
     gallup_domain: Optional[str]
     gallup_secondary_domain: Optional[str] = None
+
+
+class PlatformStats(BaseModel):
+    total_users: int
+    students: int
+    teachers: int
+    admins: int
+    completed_assessments: int
+    holland_completed: int
+    gallup_completed: int
 
 
 class ReportStudent(BaseModel):

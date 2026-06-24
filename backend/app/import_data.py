@@ -2,15 +2,20 @@ import json
 import os
 import re
 import sys
+from typing import Dict, List
 from sqlalchemy.orm import Session
 from app.database import SessionLocal, engine, Base
 from app import models
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(os.path.dirname(BASE_DIR), "..", "..", "data", "processed")
-# Adjust because backend is at 06-website/assessment-platform/backend, data is at data/processed
-# Relative path: backend/../../data/processed
-DATA_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "..", "data", "processed"))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
+# 优先使用仓库内 research 数据目录；兼容旧版 data/processed 布局
+_CANDIDATE_DIRS = [
+    os.path.join(PROJECT_ROOT, "research", "测评研究", "data", "processed"),
+    os.path.join(PROJECT_ROOT, "data", "processed"),
+    os.path.abspath(os.path.join(BASE_DIR, "..", "..", "..", "data", "processed")),
+]
+DATA_DIR = next((d for d in _CANDIDATE_DIRS if os.path.isdir(d)), _CANDIDATE_DIRS[0])
 
 
 def parse_gallup_180_questions(md_path: str):
@@ -112,29 +117,23 @@ def import_holland_questions(db: Session):
     print(f"Imported {qnum - 1} Holland questions")
 
 
-def import_gallup_questions(db: Session):
+def load_gallup_theme_mapping() -> Dict[int, Dict[str, List[str]]]:
+    """加载 gallup_theme_mapping.json（优先）并合并 association 与 legacy missing 文件。"""
     md_path = os.path.join(DATA_DIR, "gallup_180_questions_list.md")
     assoc_path = os.path.join(DATA_DIR, "gallup_questions_students_association.md")
-    missing_path = os.path.join(DATA_DIR, "gallup_missing_mapping.json")
+    mapping_path = os.path.join(DATA_DIR, "gallup_theme_mapping.json")
+    legacy_missing_path = os.path.join(DATA_DIR, "gallup_missing_mapping.json")
 
     questions = parse_gallup_180_questions(md_path)
-    mapping = parse_gallup_theme_association(assoc_path)
-
-    # A-side and B-side themes per question
     q_to_a = {q["question_num"]: [] for q in questions}
     q_to_b = {q["question_num"]: [] for q in questions}
 
-    # The association file gives A-side themes
-    for theme, nums in mapping.items():
-        for n in nums:
-            if theme not in q_to_a.get(n, []):
-                q_to_a.setdefault(n, []).append(theme)
-
-    # Merge missing-question mapping
-    if os.path.exists(missing_path):
-        with open(missing_path, "r", encoding="utf-8") as f:
-            missing = json.load(f)
-        for num_str, sides in missing.items():
+    # 1) 主映射文件（build_gallup_mapping.py 生成）
+    if os.path.exists(mapping_path):
+        with open(mapping_path, "r", encoding="utf-8") as f:
+            payload = json.load(f)
+        items = payload.get("questions", payload)
+        for num_str, sides in items.items():
             n = int(num_str)
             for t in sides.get("a", []):
                 if t not in q_to_a.get(n, []):
@@ -142,10 +141,51 @@ def import_gallup_questions(db: Session):
             for t in sides.get("b", []):
                 if t not in q_to_b.get(n, []):
                     q_to_b.setdefault(n, []).append(t)
+    else:
+        # 2) 回退：association + legacy missing
+        theme_map = parse_gallup_theme_association(assoc_path)
+        for theme, nums in theme_map.items():
+            for n in nums:
+                if theme not in q_to_a.get(n, []):
+                    q_to_a.setdefault(n, []).append(theme)
+        if os.path.exists(legacy_missing_path):
+            with open(legacy_missing_path, "r", encoding="utf-8") as f:
+                missing = json.load(f)
+            for num_str, sides in missing.items():
+                n = int(num_str)
+                for t in sides.get("a", []):
+                    if t not in q_to_a.get(n, []):
+                        q_to_a.setdefault(n, []).append(t)
+                for t in sides.get("b", []):
+                    if t not in q_to_b.get(n, []):
+                        q_to_b.setdefault(n, []).append(t)
+
+    return q_to_a, q_to_b, questions
+
+
+def apply_gallup_mappings_to_db(db: Session, q_to_a: Dict[int, List[str]], q_to_b: Dict[int, List[str]]):
+    """更新或写入 Gallup 题目的 A/B 侧主题映射。"""
+    rows = db.query(models.Question).filter(models.Question.assessment_type == "gallup").all()
+    by_num = {r.question_num: r for r in rows}
+    updated = 0
+    for num, a_tags in q_to_a.items():
+        row = by_num.get(num)
+        if not row:
+            continue
+        row.theme_tags = a_tags
+        row.b_side_themes = q_to_b.get(num, [])
+        updated += 1
+    db.commit()
+    return updated
+
+
+def import_gallup_questions(db: Session):
+    q_to_a, q_to_b, questions = load_gallup_theme_mapping()
 
     existing = db.query(models.Question).filter(models.Question.assessment_type == "gallup").count()
     if existing > 0:
-        print(f"Gallup questions already imported: {existing}")
+        n = apply_gallup_mappings_to_db(db, q_to_a, q_to_b)
+        print(f"Gallup questions already imported: {existing}; updated mappings for {n} questions")
         return
 
     for q in questions:
@@ -156,11 +196,20 @@ def import_gallup_questions(db: Session):
             statement_b=q["statement_b"],
             scenario_hint=q["scenario_hint"],
             theme_tags=q_to_a.get(q["question_num"], []),
-            b_side_themes=q_to_b.get(q["question_num"], [])
+            b_side_themes=q_to_b.get(q["question_num"], []),
         )
         db.add(db_q)
     db.commit()
     print(f"Imported {len(questions)} Gallup questions")
+
+
+def refresh_gallup_mappings(db: Session):
+    """仅刷新 Gallup 主题映射（不重导题目文本）。"""
+    q_to_a, q_to_b, _ = load_gallup_theme_mapping()
+    n = apply_gallup_mappings_to_db(db, q_to_a, q_to_b)
+    has_a = sum(1 for v in q_to_a.values() if v)
+    has_b = sum(1 for v in q_to_b.values() if v)
+    print(f"Refreshed Gallup mappings: {n} questions, A-side={has_a}/180, B-side={has_b}/180")
 
 
 def import_career_mapping(db: Session):
@@ -218,39 +267,57 @@ def import_theme_descriptions(db: Session):
 
 def create_default_users(db: Session):
     from app.auth import get_password_hash
-    
-    # Create teacher if not exists
-    teacher = db.query(models.User).filter(models.User.username == "teacher").first()
-    if not teacher:
-        teacher = models.User(
-            username="teacher",
-            display_name="演示老师",
-            role=models.UserRole.teacher,
-            password_hash=get_password_hash("teacher123")
-        )
-        db.add(teacher)
-        print("Created default teacher: teacher / teacher123")
-    
-    # Create demo student
+
+    privileged = [
+        ("admin", "系统管理员", models.UserRole.admin, "Hg@Admin2026!xK9"),
+        ("supervisor", "运营督导", models.UserRole.admin, "Hg@Supervisor2026!vQ7"),
+        ("teacher", "演示老师", models.UserRole.teacher, "Hg@Teacher2026!mP4"),
+    ]
+    for username, display_name, role, password in privileged:
+        existing = db.query(models.User).filter(models.User.username == username).first()
+        if not existing:
+            db.add(models.User(
+                username=username,
+                display_name=display_name,
+                role=role,
+                password_hash=get_password_hash(password),
+                profile_complete=True,
+                is_active=True,
+            ))
+            print(f"Created privileged user: {username} / {password}")
+        elif username in ("admin", "supervisor", "teacher"):
+            existing.password_hash = get_password_hash(password)
+            existing.role = role
+            existing.is_active = True
+            print(f"Updated privileged user password: {username}")
+
     student = db.query(models.User).filter(models.User.username == "student").first()
     if not student:
         student = models.User(
             username="student",
             display_name="演示学生",
             role=models.UserRole.student,
-            password_hash=get_password_hash("student123")
+            password_hash=get_password_hash("Student@2026!demo"),
+            school="演示学校",
+            grade="高三",
+            profile_complete=True,
         )
         db.add(student)
-        print("Created default student: student / student123")
-    
+        print("Created demo student: student / Student@2026!demo")
+
     db.commit()
 
 
 def main():
+    from app.database import migrate_schema
     Base.metadata.create_all(bind=engine)
+    migrate_schema()
     db = SessionLocal()
     try:
         print(f"Using data directory: {DATA_DIR}")
+        if len(sys.argv) > 1 and sys.argv[1] == "--refresh-gallup":
+            refresh_gallup_mappings(db)
+            return
         import_holland_questions(db)
         import_gallup_questions(db)
         import_career_mapping(db)

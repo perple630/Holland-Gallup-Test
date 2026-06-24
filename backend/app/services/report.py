@@ -1,4 +1,6 @@
-from typing import List, Dict, Any
+import json
+import os
+from typing import List, Dict, Any, Optional
 from sqlalchemy import case
 from sqlalchemy.orm import Session
 from app import models
@@ -49,7 +51,7 @@ RIASEC_MEANING = {
 # ---------------------------------------------------------------------------
 
 def _build_data_quality_notes(holland_quality: Dict[str, Any] = None, gallup_coverage: Dict[str, Any] = None) -> List[str]:
-    """根据 Holland 区分度与 Gallup B 侧覆盖率生成数据质量提示。"""
+    """根据 Holland 区分度与 Gallup 映射覆盖率生成数据质量提示。"""
     notes = []
 
     if holland_quality and holland_quality.get("is_flat"):
@@ -60,15 +62,22 @@ def _build_data_quality_notes(holland_quality: Dict[str, Any] = None, gallup_cov
 
     if gallup_coverage:
         b_ratio = gallup_coverage.get("b_side_ratio", 0)
+        dual_ratio = gallup_coverage.get("dual_side_ratio", 0)
+        themes_scored = gallup_coverage.get("themes_scored", 0)
         if b_ratio < 0.5:
             notes.append(
-                f"当前 Gallup 测评的 B 侧主题映射覆盖率为 {b_ratio*100:.1f}%，B 侧陈述对才干计分的贡献有限，优势结果主要反映 A 侧偏好，请谨慎解读。/ "
-                f"The current Gallup B-side theme mapping coverage is {b_ratio*100:.1f}%, so B-side statements contribute little to theme scoring. Strengths results mainly reflect A-side preferences; interpret cautiously."
+                f"当前 Gallup 模拟量表的 B 侧主题映射覆盖率为 {b_ratio*100:.1f}%，B 侧陈述对才干计分的贡献有限，优势结果主要反映 A 侧偏好，请谨慎解读。/ "
+                f"The Gallup simulation B-side theme mapping coverage is {b_ratio*100:.1f}%, so B-side statements contribute little to theme scoring. Strengths results mainly reflect A-side preferences; interpret cautiously."
             )
-        elif b_ratio < 0.8:
+        elif b_ratio < 0.9:
             notes.append(
-                f"当前 Gallup 测评的 B 侧主题映射覆盖率为 {b_ratio*100:.1f}%，优势结果基本可用，但部分反向陈述未参与计分。/ "
-                f"The current Gallup B-side theme mapping coverage is {b_ratio*100:.1f}%. Strengths results are usable, but some reverse statements are not yet scored."
+                f"当前 Gallup 模拟量表的 A/B 侧映射基本可用（B 侧覆盖率 {b_ratio*100:.1f}%，双侧同时计分 {dual_ratio*100:.1f}%），但仍为启发式映射，非官方 CliftonStrengths 算法。/ "
+                f"Gallup simulation mapping is mostly usable (B-side {b_ratio*100:.1f}%, dual-side {dual_ratio*100:.1f}%), but remains heuristic—not the official CliftonStrengths algorithm."
+            )
+        else:
+            notes.append(
+                f"Gallup 模拟量表 A/B 双侧映射已完整（双侧计分题 {dual_ratio*100:.1f}%，{themes_scored}/34 个主题参与计分）。结果为探索性参考，非官方 CliftonStrengths 报告。/ "
+                f"Gallup simulation has full A/B mapping (dual-side {dual_ratio*100:.1f}%, {themes_scored}/34 themes scored). Results are for exploration—not an official CliftonStrengths report."
             )
 
     if not notes:
@@ -163,6 +172,7 @@ def generate_student_report(db: Session, user_id: str) -> Dict[str, Any]:
     holland_scores = assessment.holland_scores or {}
     gallup_top5 = assessment.gallup_top5 or []
     gallup_domain = assessment.gallup_domain or ""
+    gallup_secondary_domain = assessment.gallup_secondary_domain or ""
     status = assessment.status or {}
     gallup_coverage = status.get("gallup_coverage")
     holland_quality = status.get("holland_quality")
@@ -173,7 +183,8 @@ def generate_student_report(db: Session, user_id: str) -> Dict[str, Any]:
     # Data quality notes
     data_quality_notes = _build_data_quality_notes(holland_quality, gallup_coverage)
 
-    # Actions (personalized based on Holland code and Gallup domain)
+    # Tension & personalized actions
+    tension = analyze_tension(holland_code, gallup_domain)
     actions = _build_personalized_actions(holland_code, gallup_domain)
 
     report_html = _build_student_html(
@@ -181,9 +192,12 @@ def generate_student_report(db: Session, user_id: str) -> Dict[str, Any]:
         holland_code=holland_code,
         holland_scores=holland_scores,
         gallup_domain=gallup_domain,
+        gallup_secondary_domain=gallup_secondary_domain,
+        gallup_top5=gallup_top5,
         careers=careers,
         actions=actions,
         data_quality_notes=data_quality_notes,
+        tension=tension,
     )
 
     return {
@@ -192,8 +206,10 @@ def generate_student_report(db: Session, user_id: str) -> Dict[str, Any]:
         "holland_scores": holland_scores,
         "gallup_top5": gallup_top5,
         "gallup_domain": gallup_domain,
+        "gallup_secondary_domain": gallup_secondary_domain,
         "careers": careers,
         "actions": actions,
+        "tension": tension,
         "report_html": report_html,
         "data_quality_notes": data_quality_notes,
         "gallup_coverage": gallup_coverage,
@@ -319,10 +335,52 @@ def _css() -> str:
 .kz-report .kz-tag-steady { background: #d1fae5; color: #065f46; }
 .kz-report .kz-tag-explore { background: #fef3c7; color: #92400e; }
 .kz-report .kz-tag-challenge { background: #fee2e2; color: #991b1b; }
-.kz-report .kz-matrix-dominant { background: #dbeafe; font-weight: 700; }
-.kz-report .kz-matrix-secondary { background: #fef3c7; }
-.kz-report .kz-matrix-tertiary { background: #f3f4f6; }
+.kz-report .kz-matrix-dominant { background: #dbeafe; border: 3px solid #1d4ed8 !important; font-weight: 700; box-shadow: inset 0 0 0 1px #93c5fd; }
+.kz-report .kz-matrix-secondary { background: #fffbeb; border: 2px dashed #d97706 !important; }
+.kz-report .kz-matrix-tertiary { background: #f5f3ff; border: 2px dotted #7c3aed !important; }
 .kz-report .kz-matrix-header { background: #1e40af; color: #fff; font-weight: 600; }
+.kz-report .kz-matrix-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; margin-bottom: 6px; line-height: 1.3; }
+.kz-report .kz-matrix-badge-dominant { background: #1d4ed8; color: #fff; }
+.kz-report .kz-matrix-badge-secondary { background: #d97706; color: #fff; }
+.kz-report .kz-matrix-badge-tertiary { background: #7c3aed; color: #fff; }
+.kz-report .kz-matrix-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.kz-report .kz-matrix-legend-item { flex: 1; min-width: 200px; padding: 12px 14px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+.kz-report .kz-matrix-legend-dominant { border: 3px solid #1d4ed8; background: #eff6ff; }
+.kz-report .kz-matrix-legend-secondary { border: 2px dashed #d97706; background: #fffbeb; }
+.kz-report .kz-matrix-legend-tertiary { border: 2px dotted #7c3aed; background: #f5f3ff; }
+.kz-report .kz-matrix-legend-item strong { display: block; margin-bottom: 4px; font-size: 14px; }
+.kz-report .kz-matrix-domain-title { font-weight: 700; font-size: 13px; line-height: 1.4; }
+.kz-report .kz-matrix-table td { font-size: 12px; line-height: 1.35; padding: 8px 10px; }
+.kz-report .kz-matrix-table th { font-size: 12px; padding: 8px 10px; }
+.kz-report .kz-intersection-detail { margin-top: 28px; }
+.kz-report .kz-intersection-detail > h3 { font-size: 18px; color: #1e40af; margin: 0 0 8px 0; padding-bottom: 8px; border-bottom: 2px solid #dbeafe; }
+.kz-report .kz-intersection-intro { color: #4b5563; font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; }
+.kz-report .kz-intersection-tier { margin-bottom: 24px; }
+.kz-report .kz-intersection-tier-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; padding: 14px 16px; border-radius: 10px; }
+.kz-report .kz-intersection-tier-primary .kz-intersection-tier-header { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; }
+.kz-report .kz-intersection-tier-secondary .kz-intersection-tier-header { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #fcd34d; }
+.kz-report .kz-intersection-tier-tertiary .kz-intersection-tier-header { background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border: 1px solid #c4b5fd; }
+.kz-report .kz-intersection-tier-badge { flex-shrink: 0; display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; color: #fff; }
+.kz-report .kz-intersection-tier-primary .kz-intersection-tier-badge { background: #1d4ed8; }
+.kz-report .kz-intersection-tier-secondary .kz-intersection-tier-badge { background: #d97706; }
+.kz-report .kz-intersection-tier-tertiary .kz-intersection-tier-badge { background: #7c3aed; }
+.kz-report .kz-intersection-tier-desc { margin: 0; font-size: 14px; line-height: 1.65; color: #374151; }
+.kz-report .kz-intersection-cards { display: grid; gap: 14px; }
+.kz-report .kz-intersection-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.kz-report .kz-intersection-tier-primary .kz-intersection-card { border-left: 4px solid #1d4ed8; }
+.kz-report .kz-intersection-tier-secondary .kz-intersection-card { border-left: 4px solid #d97706; }
+.kz-report .kz-intersection-tier-tertiary .kz-intersection-card { border-left: 4px solid #7c3aed; }
+.kz-report .kz-intersection-card-title { font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 6px 0; }
+.kz-report .kz-intersection-card-tagline { font-size: 14px; color: #1e40af; font-style: italic; margin: 0 0 12px 0; line-height: 1.5; }
+.kz-report .kz-intersection-card-body { font-size: 14px; line-height: 1.7; color: #374151; margin: 0 0 14px 0; }
+.kz-report .kz-intersection-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e5e7eb; }
+.kz-report .kz-intersection-meta-item { font-size: 12px; line-height: 1.5; }
+.kz-report .kz-intersection-meta-item strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: #6b7280; margin-bottom: 3px; font-weight: 600; }
+.kz-report .kz-intersection-prompt { margin-top: 12px; padding: 10px 14px; background: #f0fdf4; border-radius: 8px; font-size: 13px; color: #166534; line-height: 1.55; }
+.kz-report .kz-ethics { background: #f0f9ff; border: 1px solid #bae6fd; border-left: 4px solid #0284c7; padding: 14px 18px; border-radius: 8px; margin: 16px 0; color: #0c4a6e; }
+.kz-report .kz-synthesis { background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 1px solid #bfdbfe; border-radius: 10px; padding: 20px 24px; margin: 20px 0; }
+.kz-report .kz-synthesis h3 { margin-top: 0; color: #1e40af; }
+.kz-report .kz-synthesis-advice { background: #fff; border-radius: 8px; padding: 14px 18px; margin: 12px 0; border-left: 4px solid #22c55e; }
 .kz-report .kz-small { color: #6b7280; font-size: 13px; }
 .kz-report .kz-en { color: #6b7280; font-style: italic; }
 .kz-report ul.kz-list { padding-left: 22px; }
@@ -490,16 +548,69 @@ def _deduplicate_careers_by_name(careers: List[Dict[str, Any]]) -> List[Dict[str
     return result
 
 
-def _build_cross_matrix(db: Session, holland_code: str, gallup_domain: str) -> Dict[str, Dict[str, List[str]]]:
-    """构建 6×4 兴趣×优势交叉矩阵。返回 matrix[riasec][domain_en] = [职业名, ...]。"""
-    rows = db.query(models.CareerMajorMapping).all()
-    matrix = {r: {d: [] for d in DOMAIN_ZH_TO_EN.values()} for r in ["R", "I", "A", "S", "E", "C"]}
-    for r in rows:
-        ri = (r.riasec_primary or "").upper()
-        cs = r.cs_domain or ""
-        if ri in matrix and cs in matrix[ri]:
-            matrix[ri][cs].append(r.career_name)
+_MATRIX_DOMAINS_CACHE: Optional[Dict[str, Dict[str, Optional[Dict[str, Any]]]]] = None
+
+
+def _matrix_domains_path() -> str:
+    """定位 24 格职业范畴 JSON（与 import_data 数据目录一致）。"""
+    base = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    candidates = [
+        os.path.join(base, "research", "测评研究", "data", "processed", "riasec_gallup_matrix_24_domains.json"),
+        os.path.join(base, "data", "processed", "riasec_gallup_matrix_24_domains.json"),
+    ]
+    return next((p for p in candidates if os.path.isfile(p)), candidates[0])
+
+
+def _load_matrix_domains() -> Dict[str, Dict[str, Optional[Dict[str, Any]]]]:
+    """加载 24 格职业范畴定义。返回 matrix[riasec][domain_en] = cell_dict | None。"""
+    global _MATRIX_DOMAINS_CACHE
+    if _MATRIX_DOMAINS_CACHE is not None:
+        return _MATRIX_DOMAINS_CACHE
+
+    matrix = {r: {d: None for d in DOMAIN_ZH_TO_EN.values()} for r in ["R", "I", "A", "S", "E", "C"]}
+    path = _matrix_domains_path()
+    if os.path.isfile(path):
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        for cell in data.get("cells", []):
+            ri = (cell.get("riasec") or "").upper()
+            dom = cell.get("gallup_domain_en") or ""
+            if ri in matrix and dom in matrix[ri]:
+                matrix[ri][dom] = cell
+    _MATRIX_DOMAINS_CACHE = matrix
     return matrix
+
+
+def _matrix_intersection_tier(
+    ri: str,
+    domain_en: str,
+    holland_code: str,
+    gallup_domain: str,
+    gallup_secondary_domain: str = "",
+) -> str:
+    """判定单元格与用户结果的交叉层级：dominant | secondary | tertiary | 空。"""
+    if not holland_code:
+        return ""
+    first = holland_code[0].upper()
+    second = holland_code[1].upper() if len(holland_code) > 1 else ""
+    third = holland_code[2].upper() if len(holland_code) > 2 else ""
+
+    leading = _domain_en(gallup_domain)
+    secondary = _domain_en(gallup_secondary_domain)
+    has_secondary_gallup = bool(secondary and secondary != leading)
+
+    if ri == first and domain_en == leading:
+        return "dominant"
+    if has_secondary_gallup:
+        if ri == first and domain_en == secondary:
+            return "secondary"
+        if second and ri == second and domain_en == leading:
+            return "secondary"
+        if second and ri == second and domain_en == secondary:
+            return "tertiary"
+    if third and ri == third and domain_en == leading:
+        return "tertiary"
+    return ""
 
 
 def _matrix_marker(
@@ -509,29 +620,269 @@ def _matrix_marker(
     gallup_domain: str,
     gallup_secondary_domain: str = "",
 ) -> tuple:
-    """返回单元格的标记（css 类，前缀符号）。
+    """返回单元格 CSS 类。三级视觉权重：主导 > 次要 > 第三交叉（仅边框着色，不显示圈号徽章）。"""
+    tier = _matrix_intersection_tier(ri, domain_en, holland_code, gallup_domain, gallup_secondary_domain)
+    css_map = {
+        "dominant": "kz-matrix-dominant",
+        "secondary": "kz-matrix-secondary",
+        "tertiary": "kz-matrix-tertiary",
+    }
+    return css_map.get(tier, ""), ""
 
-    使用真正的 Gallup 主要优势领域与次要优势领域，而不是把所有非主导领域都视为次要。
-    """
+
+def _matrix_legend_html() -> str:
+    """矩阵三级图例：描述性引导，弱化公式感。"""
+    return """
+<div class="kz-matrix-legend">
+  <div class="kz-matrix-legend-item kz-matrix-legend-dominant">
+    <strong>主导交叉 / Primary</strong>
+    当你最强烈的兴趣舞台，遇上最自然擅长的做事方式，一个特别值得率先投入的方向便会浮现——不妨从这里开始验证自己的热情与能力。
+    <br><span class="kz-en">Where your strongest interest stage meets your most natural working style — a direction worth exploring first.</span>
+  </div>
+  <div class="kz-matrix-legend-item kz-matrix-legend-secondary">
+    <strong>次要交叉 / Secondary</strong>
+    兴趣与才干以另一种配比相遇时，会照亮若干值得并行留意的拓展面——它们未必是主航道，却可能藏着你尚未充分尝试的潜能。
+    <br><span class="kz-en">Alternative pairings of interest and strength that reveal expansion paths and untapped potential.</span>
+  </div>
+  <div class="kz-matrix-legend-item kz-matrix-legend-tertiary">
+    <strong>第三交叉 / Third</strong>
+    在三码与双领域的交汇处，还有一些更轻柔、更长期的线索——适合作为背景关注，在主业之外慢慢积累体验与见识。
+    <br><span class="kz-en">Gentler, longer-term clues at the edges of your profile — worth keeping on your radar over time.</span>
+  </div>
+</div>
+"""
+
+
+def _tier_guidance(tier: str) -> tuple:
+    """返回某交叉层级的描述性引导（中、英）。"""
+    guidance = {
+        "dominant": (
+            "这是你当前最值得优先投入精力的方向。不妨问自己：在这个范畴里，哪些具体活动曾让你忘记时间？哪些经历让你感到「这就是我擅长的事」？",
+            "Your top-priority direction. Ask yourself: which activities in this domain made you lose track of time? When did you feel 'this is what I'm good at'?",
+        ),
+        "secondary": (
+            "这些交叉为你打开了另一种可能的组合方式。它们适合作为并行探索的支线——不必立刻做出选择，但值得在课程、社团或短期项目中轻轻试探。",
+            "These intersections open alternative combinations worth exploring in parallel — try them lightly through courses, clubs, or short projects.",
+        ),
+        "tertiary": (
+            "这些线索处于你兴趣与优势谱系的边缘地带，不必急于定义，却值得长期留意。随着阅历增长，它们有时会意外成为新的突破口。",
+            "These clues sit at the edges of your profile — no rush to define them, but worth tracking as experience grows; they may become unexpected breakthroughs.",
+        ),
+    }
+    return guidance.get(tier, ("", ""))
+
+
+def _intersection_prompt(tier: str) -> tuple:
+    """返回单格探索提示（中、英）。"""
+    prompts = {
+        "dominant": (
+            "💡 试着找一个与此范畴相关的小项目或体验，记录你在其中的能量变化。",
+            "💡 Try a small project in this domain and note how your energy shifts.",
+        ),
+        "secondary": (
+            "💡 可以把它当作「第二战场」——在主业之外，每周留出一小块时间做相关尝试。",
+            "💡 Treat this as a 'second front' — set aside a small weekly slice for related experiments.",
+        ),
+        "tertiary": (
+            "💡 不必立刻行动，但可以把相关领域加入你的阅读清单或关注列表，保持开放。",
+            "💡 No immediate action needed — add related topics to your reading list and stay open.",
+        ),
+    }
+    return prompts.get(tier, ("", ""))
+
+
+def _collect_tier_coordinates(
+    tier: str,
+    holland_code: str,
+    gallup_domain: str,
+    gallup_secondary_domain: str = "",
+) -> List[tuple]:
+    """收集某层级对应的 (riasec, domain_en) 坐标列表。"""
     if not holland_code:
-        return "", ""
+        return []
     first = holland_code[0].upper()
     second = holland_code[1].upper() if len(holland_code) > 1 else ""
     third = holland_code[2].upper() if len(holland_code) > 2 else ""
-
     leading = _domain_en(gallup_domain)
     secondary = _domain_en(gallup_secondary_domain)
+    has_secondary = bool(secondary and secondary != leading)
 
-    # 主导交叉象限：Holland 第一码 × 主导优势领域
-    if ri == first and domain_en == leading:
-        return "kz-matrix-dominant", ""
-    # 次要交叉象限：Holland 第二码 × 主导优势领域，或 Holland 第一码 × 次要优势领域
-    if (ri == second and domain_en == leading) or (ri == first and domain_en == secondary):
-        return "kz-matrix-secondary", "⭐ "
-    # 第三码相关象限：Holland 第三码 × 主导优势领域
-    if ri == third and domain_en == leading:
-        return "kz-matrix-tertiary", "○ "
-    return "", ""
+    if tier == "dominant":
+        return [(first, leading)]
+    if tier == "secondary":
+        coords = []
+        if has_secondary:
+            coords.append((first, secondary))
+        if second:
+            coords.append((second, leading))
+        return coords
+    if tier == "tertiary":
+        coords = []
+        if has_secondary and second:
+            coords.append((second, secondary))
+        if third:
+            coords.append((third, leading))
+        return coords
+    return []
+
+
+def _secondary_intersection_summary(
+    holland_code: str,
+    gallup_domain: str,
+    gallup_secondary_domain: str = "",
+) -> tuple:
+    """生成次要交叉点的中英文摘要。"""
+    coords = _collect_tier_coordinates("secondary", holland_code, gallup_domain, gallup_secondary_domain)
+    if not coords:
+        return "未指定", "Not specified"
+    zh_parts = []
+    en_parts = []
+    for ri, dom in coords:
+        dom_zh = DOMAIN_EN_TO_ZH.get(dom, dom)
+        zh_parts.append(f"{_type_name(ri)} × {dom_zh}")
+        en_parts.append(f"{ri} × {dom}")
+    return "，".join(zh_parts), ", ".join(en_parts)
+
+
+def _third_intersection_summary(
+    holland_code: str,
+    gallup_domain: str,
+    gallup_secondary_domain: str = "",
+) -> tuple:
+    """生成第三交叉点的中英文摘要。"""
+    coords = _collect_tier_coordinates("tertiary", holland_code, gallup_domain, gallup_secondary_domain)
+    if not coords:
+        return "未指定", "Not specified"
+    zh_parts = []
+    en_parts = []
+    for ri, dom in coords:
+        dom_zh = DOMAIN_EN_TO_ZH.get(dom, dom)
+        zh_parts.append(f"{_type_name(ri)} × {dom_zh}")
+        en_parts.append(f"{ri} × {dom}")
+    return "，".join(zh_parts), ", ".join(en_parts)
+
+
+def _matrix_ethics_notice() -> str:
+    """交叉矩阵伦理说明：强调探索性、非诊断性。"""
+    return """
+<div class="kz-ethics">
+  <p><strong>关于本矩阵的说明 / About This Matrix</strong></p>
+  <p>本框架是一个<strong>辅助你探索兴趣与潜能交集</strong>的工具，而非对你下结论的标签。矩阵中的每一格代表一种<strong>职业范畴</strong>（方向层），是根据 Holland 兴趣舞台与 Gallup 工作方式的理论整合而定义；报告后文的「推荐职业路径」则提供具体岗位线索。请把结果当作<strong>对话与行动的起点</strong>，通过课程体验、实习、访谈和项目实践来验证。</p>
+  <p class="kz-en"><em>This matrix is an <strong>exploration aid</strong>, not a diagnostic label. Each cell represents an <strong>occupational domain</strong> (direction layer) defined by the integration of Holland interest stage and Gallup working style; specific job suggestions appear later in the career paths section. Use these insights as a starting point for conversation and action; validate them through real experiences, internships, interviews, and projects.</em></p>
+</div>
+"""
+
+
+def _build_student_synthesis(
+    student_name: str,
+    holland_code: str,
+    holland_scores: Dict[str, int],
+    gallup_domain: str,
+    gallup_secondary_domain: str,
+    gallup_top5: List[str],
+    careers: List[Dict[str, Any]],
+    tension: str,
+) -> str:
+    """为学生版报告生成综合解读与个性化建议。"""
+    dominant = holland_code[0].upper() if holland_code else ""
+    second = holland_code[1].upper() if len(holland_code) > 1 else ""
+    third = holland_code[2].upper() if len(holland_code) > 2 else ""
+    domain_en = _domain_en(gallup_domain)
+    strength_style = _strength_style(domain_en) if gallup_domain else "未指定 / Not specified"
+    stage_tag = _stage_tag(dominant) if dominant else ""
+    consistency = _holland_consistency(holland_code)
+    overall_fit = _overall_fit(holland_code, domain_en) if holland_code and gallup_domain else ""
+
+    top_career_names = [c.get("career_name") for c in (careers or [])[:3] if c.get("career_name")]
+    career_hint = "、".join(top_career_names) if top_career_names else "见下方推荐列表"
+    top5_text = "、".join(gallup_top5[:5]) if gallup_top5 else "待完成 Gallup 测评后显示"
+
+    interest_lines = []
+    for rank, letter in enumerate(holland_code.upper(), 1):
+        zh_meaning = RIASEC_MEANING.get(letter, ("", ""))[0]
+        rank_label = {1: "最感兴趣", 2: "次感兴趣", 3: "第三感兴趣"}.get(rank, "")
+        interest_lines.append(f"<li><strong>{letter}</strong>（{_type_name(letter)}）— {rank_label}：{_escape_html(zh_meaning)}</li>")
+    interest_list = "\n".join(interest_lines)
+
+    advice_items = _build_student_advice(holland_code, gallup_domain, gallup_secondary_domain, overall_fit)
+    advice_html = "".join(f"<li>{_escape_html(a)}</li>" for a in advice_items)
+
+    return f"""
+<div class="kz-synthesis">
+  <h3>综合解读与给你的建议 | Summary & Recommendations</h3>
+  <p><strong>{_escape_html(student_name)}</strong>，你好。以下是对你本次双维度测评的综合解读——帮你把「喜欢做什么」和「擅长怎么做」放在一起看。</p>
+  <p class="kz-en"><em>Hello <strong>{_escape_html(student_name)}</strong>. This section integrates what you enjoy doing with how you naturally work best.</em></p>
+
+  <h4>你是谁：兴趣舞台 + 优势风格 | Who You Are</h4>
+  <p>你的 Holland 三码是 <strong>{holland_code or '—'}</strong>，兴趣舞台标签为 <strong>{_escape_html(stage_tag)}</strong>；Gallup 主导优势领域是 <strong>{_escape_html(gallup_domain or '未指定')}</strong>（次要领域：{_escape_html(gallup_secondary_domain or '未指定')}），工作风格偏向 <strong>{_escape_html(strength_style)}</strong>。</p>
+  <p>Top 5 才干主题：{_escape_html(top5_text)}</p>
+  <ul class="kz-list">
+    {interest_list}
+  </ul>
+
+  <h4>兴趣与优势如何配合 | How Interests & Strengths Fit</h4>
+  <p>{_escape_html(tension)}</p>
+  <p><strong>整体契合度 / Overall Fit</strong>：{_escape_html(overall_fit)}</p>
+  <p class="kz-small">{_escape_html(consistency)}</p>
+
+  <div class="kz-synthesis-advice">
+    <p><strong>给你的三条建议 / Three Recommendations for You</strong></p>
+    <ol class="kz-list">
+      {advice_html}
+    </ol>
+  </div>
+
+  <p>结合以上解读，当前最值得你留意的探索方向包括：<strong>{_escape_html(career_hint)}</strong>。请从下方「稳妥入口职业」和「核心推荐专业」中挑选 1–2 个，用真实体验去验证——喜欢不等于适合，适合也需要在实践中确认。</p>
+  <p class="kz-en"><em>Based on this profile, directions worth exploring include: <strong>{_escape_html(career_hint)}</strong>. Pick 1–2 from the safe-entry careers and core majors below, and validate through real experience.</em></p>
+
+  <div class="kz-ethics">
+    <p><strong>重要提醒 / Important Reminder</strong>：本报告是<strong>探索与自我发现的辅助工具</strong>，不能替代你的判断，也不能限制你的可能性。测评结果会随经历与成长而变化——请带着好奇而非焦虑阅读，并与信任的老师、家长或咨询师讨论你的下一步。</p>
+    <p class="kz-en"><em>This report is an <strong>exploration aid</strong>, not a verdict on who you must become. Results can evolve with experience—read with curiosity, not anxiety, and discuss your next steps with trusted adults or counselors.</em></p>
+  </div>
+</div>
+"""
+
+
+def _build_student_advice(
+    holland_code: str,
+    gallup_domain: str,
+    gallup_secondary_domain: str,
+    overall_fit: str,
+) -> List[str]:
+    """根据测评结果生成三条学生向建议（中英双语）。"""
+    if not holland_code:
+        return [
+            "先完成 Holland 与 Gallup 两项测评，再阅读综合建议。/ Complete both assessments before reading the synthesis.",
+            "找一位你信任的人，聊聊你最近最有成就感的三件事。/ Talk with someone you trust about three recent moments you felt proud of.",
+            "不要急于选专业，先用一个周末做一件你好奇的小事并记录感受。/ Don't rush into a major—try one small thing you're curious about this weekend and note how it feels.",
+        ]
+
+    first = holland_code[0].upper()
+    stage_advice = {
+        "R": "优先安排能动手、能出具体成果的体验（维修、实验、户外项目等），观察你是否真的享受。/ Prioritize hands-on experiences with tangible outcomes and notice whether you genuinely enjoy them.",
+        "I": "选一个你好奇的话题，做一次深度调研或小型研究，记录你最想继续追问的问题。/ Pick a topic you are curious about, do a small research dive, and note what questions you still want to pursue.",
+        "A": "完成一件小型创作（设计、写作、音乐、视频等）并收集他人反馈，感受创作过程是否让你充满能量。/ Create a small piece of work and gather feedback—notice whether the creative process energizes you.",
+        "S": "参与一次助人或陪伴活动（辅导、志愿、倾听朋友），留意你在互动中的感受与消耗。/ Join a helping or mentoring activity and notice how you feel during and after the interaction.",
+        "E": "主导或参与一个小型项目（活动、社团、售卖、演讲），体验说服与推动的过程。/ Lead or join a small project to experience persuasion, coordination, and momentum.",
+        "C": "尝试整理一份复杂资料或完成一项需要细致核对的事务，观察你对流程与准确性的感受。/ Try organizing complex information or completing detail-heavy work and observe how you feel about process and accuracy.",
+    }
+    domain_advice = {
+        "执行力": "把大目标拆成可执行的小步骤，用一周时间跟踪完成率——你的优势在「把事做完」。/ Break big goals into small steps and track completion for a week—your strength is getting things done.",
+        "影响力": "练习用 3 分钟清晰表达一个观点，并观察听众的反应——你的优势在「推动他人行动」。/ Practice expressing one idea clearly in 3 minutes and observe how others respond—your strength is mobilizing action.",
+        "关系建立": "主动与一位你欣赏的人深聊，记录你们建立信任的过程——你的优势在「连接人与信任」。/ Have a deep conversation with someone you admire and notice how trust builds—your strength is connecting people.",
+        "战略思维": "针对你关心的方向写一份简短的趋势分析或问题清单——你的优势在「看见模式与方向」。/ Write a short trend analysis or question list on a topic you care about—your strength is seeing patterns and direction.",
+    }
+    fit_advice = (
+        "你的兴趣与优势整体一致，可以较大胆地在主导交叉方向上投入时间；仍建议用实习或项目做小范围验证。/ Your interests and strengths align well—feel confident investing time in your primary intersection, but still validate through projects or internships."
+        if "高度一致" in overall_fit or "High alignment" in overall_fit
+        else "你的兴趣与优势存在差异或张力，不必强行统一——寻找能把两者结合起来的具体场景（如跨学科项目、复合岗位）。/ Your interests and strengths show tension—don't force them to match; look for roles or projects that combine both."
+    )
+
+    return [
+        stage_advice.get(first, stage_advice["R"]),
+        domain_advice.get(gallup_domain, domain_advice.get(gallup_secondary_domain, "回顾你的 Top 5 主题，找出最常出现的工作场景并刻意练习。/ Review your Top 5 themes and practice the work situations where they show up most.")),
+        fit_advice,
+    ]
 
 
 def _build_student_html(
@@ -539,9 +890,12 @@ def _build_student_html(
     holland_code: str,
     holland_scores: Dict[str, int],
     gallup_domain: str,
+    gallup_secondary_domain: str,
+    gallup_top5: List[str],
     careers: List[Dict[str, Any]],
     actions: List[str],
     data_quality_notes: List[str],
+    tension: str,
 ) -> str:
     safe = _safe_entry_points(careers)
     major_tiers = _build_major_tiers(careers)
@@ -571,6 +925,17 @@ def _build_student_html(
     for note in data_quality_notes:
         quality_items += f"<li>{_escape_html(note)}</li>"
 
+    synthesis_html = _build_student_synthesis(
+        student_name=student_name,
+        holland_code=holland_code,
+        holland_scores=holland_scores,
+        gallup_domain=gallup_domain,
+        gallup_secondary_domain=gallup_secondary_domain,
+        gallup_top5=gallup_top5,
+        careers=careers,
+        tension=tension,
+    )
+
     return f"""
 <div class="kz-report">
 {_css()}
@@ -591,6 +956,8 @@ def _build_student_html(
     {quality_items}
   </ul>
 </div>
+
+{synthesis_html}
 
 <h2>1. 我的核心结果 | My Core Results</h2>
 <table>
@@ -644,7 +1011,7 @@ def _build_professional_html(
     safe = _safe_entry_points(careers)
     major_tiers = _build_major_tiers(careers)
     career_tiers = _build_career_tiers(careers, holland_code, gallup_domain)
-    matrix = _build_cross_matrix(db, holland_code, gallup_domain)
+    matrix = _load_matrix_domains()
 
     domain_en = _domain_en(gallup_domain)
     secondary_domain_en = _domain_en(gallup_secondary_domain)
@@ -741,16 +1108,12 @@ def _build_professional_html(
     matrix_html = _build_matrix_html(matrix, holland_code, gallup_domain, gallup_secondary_domain)
     cross_section = f"""
 <h2>三、兴趣 × 优势交叉矩阵 | Interest × Strengths Cross-Matrix</h2>
-<p>下方矩阵展示了 6 种 RIASEC 兴趣类型与 4 大 CliftonStrengths 优势领域的交叉组合。标注规则：</p>
-<ul class="kz-list">
-  <li><strong>粗体 / Bold</strong> = 你的主导交叉象限（Holland 第一码 × 主导优势领域）</li>
-  <li>⭐ = 你的次要交叉象限（Holland 第二码 × 主导优势领域，或 Holland 第一码 × 次要优势领域）</li>
-  <li>○ = 你的第三码相关象限（Holland 第三码 × 主导优势领域）</li>
-</ul>
-<p class="kz-en"><em>Bold = dominant intersection (1st Holland letter × leading domain); ⭐ = secondary intersection (2nd Holland letter × leading domain, or 1st Holland letter × secondary domain); ○ = tertiary-code related intersection (3rd Holland letter × leading domain).</em></p>
+{_matrix_ethics_notice()}
+<p>下方矩阵展示了 6 种 RIASEC 兴趣类型与 4 大 CliftonStrengths 优势领域交叉形成的 <strong>24 种职业范畴</strong>。表格中每格仅标注范畴名称；带色边框的格子与你结果相关——边框越实、颜色越深，关联越强。具体解读见矩阵下方。</p>
+<p class="kz-en"><em>The matrix shows <strong>24 occupational domains</strong>. Each cell lists only the domain name; colored borders mark relevance to your results. See detailed interpretation below the matrix.</em></p>
+{_matrix_legend_html()}
 {matrix_html}
-<p><strong>你的交叉点 / Your Intersection</strong>：{_type_name(dominant_type) if dominant_type else '未指定'} × {_escape_html(gallup_domain or '未指定')} / {dominant_type_name.split('（')[1].replace('）','') if '（' in dominant_type_name else dominant_type} × {domain_en}</p>
-<p><strong>次要交叉点 / Secondary Intersection</strong>：{_type_name(dominant_type) if dominant_type else '未指定'} × {_escape_html(gallup_secondary_domain or '未指定')} / {dominant_type_name.split('（')[1].replace('）','') if '（' in dominant_type_name else dominant_type} × {secondary_domain_en}</p>
+{_build_matrix_intersection_html(matrix, holland_code, gallup_domain, gallup_secondary_domain)}
 """
 
     # 5. Recommended majors
@@ -864,8 +1227,104 @@ def _domain_description(domain_en: str) -> str:
     return descriptions.get(domain_en, "")
 
 
+def _format_matrix_cell_html(cell: Optional[Dict[str, Any]]) -> str:
+    """矩阵单元格仅显示范畴名称（黑体概括）。"""
+    if not cell:
+        return "—"
+    name = cell.get("name_zh") or ""
+    return f'<div class="kz-matrix-domain-title">{_escape_html(name)}</div>'
+
+
+def _format_intersection_card_html(cell: Dict[str, Any], tier: str) -> str:
+    """生成单格详细解读卡片。"""
+    name = cell.get("name_zh") or ""
+    tagline = cell.get("tagline_zh") or ""
+    integration = cell.get("integration_zh") or ""
+    interests = "、".join(cell.get("onet_basic_interests_zh") or [])
+    clusters = "、".join(cell.get("tag_clusters_zh") or [])
+    themes = "、".join(cell.get("gallup_themes") or [])
+    prompt_zh, prompt_en = _intersection_prompt(tier)
+
+    meta_html = ""
+    if interests or clusters or themes:
+        meta_items = []
+        if interests:
+            meta_items.append(f'<div class="kz-intersection-meta-item"><strong>兴趣线索 / Interests</strong>{_escape_html(interests)}</div>')
+        if clusters:
+            meta_items.append(f'<div class="kz-intersection-meta-item"><strong>方向集群 / Clusters</strong>{_escape_html(clusters)}</div>')
+        if themes:
+            meta_items.append(f'<div class="kz-intersection-meta-item"><strong>才干主题 / Themes</strong>{_escape_html(themes)}</div>')
+        meta_html = f'<div class="kz-intersection-meta">{"".join(meta_items)}</div>'
+
+    return f"""
+<div class="kz-intersection-card">
+  <p class="kz-intersection-card-title">{_escape_html(name)}</p>
+  {f'<p class="kz-intersection-card-tagline">{_escape_html(tagline)}</p>' if tagline else ''}
+  <p class="kz-intersection-card-body">{_escape_html(integration)}</p>
+  {meta_html}
+  <div class="kz-intersection-prompt">{_escape_html(prompt_zh)}<br><span class="kz-en">{_escape_html(prompt_en)}</span></div>
+</div>"""
+
+
+def _build_matrix_intersection_html(
+    matrix: Dict[str, Dict[str, Optional[Dict[str, Any]]]],
+    holland_code: str,
+    gallup_domain: str,
+    gallup_secondary_domain: str = "",
+) -> str:
+    """为与用户结果相关的交叉格生成分组详细解读。"""
+    if not holland_code:
+        return ""
+
+    tier_config = [
+        ("dominant", "primary", "主导交叉 / Primary"),
+        ("secondary", "secondary", "次要交叉 / Secondary"),
+        ("tertiary", "tertiary", "第三交叉 / Third"),
+    ]
+
+    sections = []
+    for tier_key, css_tier, label in tier_config:
+        coords = _collect_tier_coordinates(tier_key, holland_code, gallup_domain, gallup_secondary_domain)
+        if not coords:
+            continue
+        cards = []
+        seen_ids = set()
+        for ri, dom_en in coords:
+            cell = (matrix.get(ri) or {}).get(dom_en)
+            if not cell:
+                continue
+            cid = cell.get("id") or f"{ri}-{dom_en}"
+            if cid in seen_ids:
+                continue
+            seen_ids.add(cid)
+            cards.append(_format_intersection_card_html(cell, tier_key))
+        if not cards:
+            continue
+
+        guide_zh, guide_en = _tier_guidance(tier_key)
+        sections.append(f"""
+<div class="kz-intersection-tier kz-intersection-tier-{css_tier}">
+  <div class="kz-intersection-tier-header">
+    <span class="kz-intersection-tier-badge">{_escape_html(label.split(' / ')[0])}</span>
+    <p class="kz-intersection-tier-desc">{_escape_html(guide_zh)}<br><span class="kz-en">{_escape_html(guide_en)}</span></p>
+  </div>
+  <div class="kz-intersection-cards">{''.join(cards)}</div>
+</div>""")
+
+    if not sections:
+        return ""
+
+    return f"""
+<div class="kz-intersection-detail">
+  <h3>你的交叉解读 | Your Intersection Profile</h3>
+  <p class="kz-intersection-intro">矩阵中标色边框的格子，对应你测评结果中兴趣与优势的不同交汇方式。下方按层级展开具体范畴——帮助你从「方向感」走向「可尝试的行动线索」。</p>
+  <p class="kz-intersection-intro kz-en"><em>Colored cells in the matrix mark how your interests and strengths intersect. The sections below expand each domain — moving from direction to actionable exploration clues.</em></p>
+  {''.join(sections)}
+</div>"""
+
+
 def _build_matrix_html(
-    matrix: Dict[str, Dict[str, List[str]]],
+    matrix: Dict[str, Dict[str, Optional[Dict[str, Any]]]],
     holland_code: str,
     gallup_domain: str,
     gallup_secondary_domain: str = "",
@@ -883,11 +1342,11 @@ def _build_matrix_html(
         row = f"<th>{ri} / {_type_name_en(ri)}</th>"
         for dom in domains:
             cls, prefix = _matrix_marker(ri, dom, holland_code, gallup_domain, gallup_secondary_domain)
-            cell_careers = matrix.get(ri, {}).get(dom, [])[:4]
-            cell_text = "、".join(cell_careers) if cell_careers else "—"
-            row += f'<td class="{cls}">{prefix}{_escape_html(cell_text)}</td>'
+            cell = (matrix.get(ri) or {}).get(dom)
+            cell_html = _format_matrix_cell_html(cell)
+            row += f'<td class="{cls}">{prefix}{cell_html}</td>'
         rows += f"<tr>{row}</tr>"
-    return f"<table>{header}{rows}</table>"
+    return f'<table class="kz-matrix-table">{header}{rows}</table>'
 
 
 def _major_table_rows(majors: List[Dict[str, Any]]) -> str:

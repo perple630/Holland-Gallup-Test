@@ -3,6 +3,11 @@
     <h1>学生仪表盘</h1>
     <p class="subtitle">完成 Holland 兴趣测评与 Gallup 优势测评，解锁你的专属报告</p>
 
+    <div class="card alert" v-if="!auth.profileComplete">
+      <p>请先完善个人资料（姓名、学校、年级），以便生成完整报告。</p>
+      <button @click="$router.push('/profile')">去完善资料</button>
+    </div>
+
     <div class="card">
       <div class="progress-grid">
         <div class="progress-item" :class="{ done: progress.holland_done }">
@@ -62,9 +67,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 import { getProgress } from '../api'
 
 const router = useRouter()
+const auth = useAuthStore()
 const progress = ref({
   holland_done: false,
   gallup_done: false,
@@ -102,6 +109,16 @@ function confirmRetake(type) {
 </script>
 
 <style scoped>
+.alert {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .subtitle {
   color: #666;
   margin-bottom: 24px;

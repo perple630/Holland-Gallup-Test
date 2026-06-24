@@ -1,0 +1,586 @@
+
+<div class="kz-report">
+
+<style>
+.kz-report { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #1f2937; line-height: 1.7; max-width: 960px; margin: 0 auto; }
+.kz-report h1 { font-size: 28px; font-weight: 700; color: #111827; margin: 0 0 12px 0; }
+.kz-report h2 { font-size: 22px; font-weight: 700; color: #1e40af; margin: 32px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid #dbeafe; }
+.kz-report h3 { font-size: 18px; font-weight: 700; color: #1f2937; margin: 24px 0 10px 0; }
+.kz-report h4 { font-size: 16px; font-weight: 700; color: #374151; margin: 18px 0 8px 0; }
+.kz-report p { margin: 8px 0; }
+.kz-report .kz-meta { background: #f8fafc; border-left: 4px solid #2563eb; padding: 14px 18px; margin: 16px 0; border-radius: 6px; }
+.kz-report .kz-meta p { margin: 4px 0; }
+.kz-report .kz-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.kz-report .kz-highlight { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 14px 18px; border-radius: 6px; margin: 14px 0; }
+.kz-report .kz-tip { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 12px 16px; border-radius: 6px; margin: 14px 0; color: #166534; }
+.kz-report .kz-warning { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 6px; margin: 14px 0; color: #92400e; }
+.kz-report table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+.kz-report th, .kz-report td { border: 1px solid #e5e7eb; padding: 10px 12px; text-align: left; vertical-align: top; }
+.kz-report th { background: #f3f4f6; font-weight: 600; color: #374151; }
+.kz-report tr:nth-child(even) { background: #f9fafb; }
+.kz-report .kz-tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 6px; }
+.kz-report .kz-tag-steady { background: #d1fae5; color: #065f46; }
+.kz-report .kz-tag-explore { background: #fef3c7; color: #92400e; }
+.kz-report .kz-tag-challenge { background: #fee2e2; color: #991b1b; }
+.kz-report .kz-matrix-dominant { background: #dbeafe; font-weight: 700; }
+.kz-report .kz-matrix-secondary { background: #fef3c7; }
+.kz-report .kz-matrix-tertiary { background: #f3f4f6; }
+.kz-report .kz-matrix-header { background: #1e40af; color: #fff; font-weight: 600; }
+.kz-report .kz-small { color: #6b7280; font-size: 13px; }
+.kz-report .kz-en { color: #6b7280; font-style: italic; }
+.kz-report ul.kz-list { padding-left: 22px; }
+.kz-report ul.kz-list li { margin: 8px 0; }
+.kz-report .kz-answer-line { display: inline-block; min-width: 160px; border-bottom: 1px solid #9ca3af; }
+.kz-report .kz-stage-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; background: #ede9fe; color: #5b21b6; font-size: 13px; font-weight: 600; }
+.kz-report .kz-print-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.kz-report .kz-print-btn { background: #2563eb; color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: none; }
+.kz-report .kz-print-btn:hover { background: #1d4ed8; }
+@media print {
+  .kz-report .kz-print-btn { display: none; }
+  .kz-report { max-width: 100%; }
+  .kz-report h2 { page-break-after: avoid; }
+  .kz-report table { page-break-inside: avoid; }
+  .kz-report .kz-card, .kz-report .kz-highlight, .kz-report .kz-tip, .kz-report .kz-warning { page-break-inside: avoid; }
+}
+</style>
+
+<div class="kz-print-header">
+  <h1>双维度测评报告（专业详细版）| Dual-Dimension Assessment Report (Professional Edition)</h1>
+  <button class="kz-print-btn" onclick="window.print()">🖨️ 打印 / Print</button>
+</div>
+<div class="kz-meta">
+  <p><strong>姓名 / Name</strong>：林远舟</p>
+  <p><strong>测评日期 / Date</strong>：以系统记录为准 / As recorded by system</p>
+  <p><strong>目标申请方向 / Target Region</strong>：未指定 / Not specified</p>
+</div>
+
+<div class="kz-warning">
+  <strong>数据质量提示 / Data Quality Notes</strong>
+  <ul class="kz-list">
+    <li>当前 Gallup 测评的 B 侧主题映射覆盖率为 0.0%，B 侧陈述对才干计分的贡献有限，优势结果主要反映 A 侧偏好，请谨慎解读。/ The current Gallup B-side theme mapping coverage is 0.0%, so B-side statements contribute little to theme scoring. Strengths results mainly reflect A-side preferences; interpret cautiously.</li>
+  </ul>
+</div>
+
+
+<h2>报告概览 | Report at a Glance</h2>
+<div class="kz-highlight">
+  <p><strong>你是独一无二的存在。本报告基于你的 Holland RIASEC 兴趣测评与 Gallup CliftonStrengths 优势测评，帮助你了解自己的兴趣舞台、优势风格，以及两者交叉后的职业与专业探索方向。</strong></p>
+  <p class="kz-en"><em>You are uniquely wired. This report integrates your Holland RIASEC interest profile and Gallup CliftonStrengths talent profile to help you understand your preferred stage, natural strengths style, and intersecting career and major directions.</em></p>
+</div>
+<table>
+  <tr><th>维度 / Dimension</th><th>结果 / Result</th></tr>
+  <tr><td>Holland 三码 / Holland Code</td><td><strong>RIC</strong> — 现实型（Realistic）</td></tr>
+  <tr><td>主导兴趣舞台 / Dominant Stage</td><td>实践行动派 / Hands-On Doer</td></tr>
+  <tr><td>CliftonStrengths 主导领域 / Leading Domain</td><td>战略思维 / Strategic Thinking</td></tr>
+  <tr><td>CliftonStrengths 次要领域 / Secondary Domain</td><td>执行力 / Executing</td></tr>
+  <tr><td>优势风格 / Strengths Style</td><td>战略思考型 / Strategic Thinker</td></tr>
+</table>
+
+<h3>🎯 稳妥入口职业 | Safe Entry Points</h3>
+<p>如果你更关注就业稳定性和现实可行性，以下方向是不错的起点。这些岗位需求稳定、入行路径清晰，适合作为长期探索的「安全基地」。</p>
+<p class="kz-en">If you prioritize employment stability and practical entry paths, these roles are good starting points with clear demand and accessible entry routes.</p>
+<table>
+  <tr><th>职业 / Career</th><th>为何稳妥 / Why Steady</th><th>相关专业 / Related Majors</th></tr>
+  
+        <tr>
+          <td>技术研发工程师</td>
+          <td>负责将技术方案转化为实际产品，包括设计原型、编写技术文档、调试设备、解决生产中的技术问题。</td>
+          <td>机械工程、电子工程、自动化、计算机科学、材料科学</td>
+        </tr>
+        <tr>
+          <td>数据工程师</td>
+          <td>搭建数据收集和存储系统，清洗原始数据，设计数据管道，确保分析团队能稳定获取高质量数据。</td>
+          <td>数据科学、计算机科学、软件工程、统计学、信息系统</td>
+        </tr>
+</table>
+<div class="kz-tip">
+  💡 <strong>提示 / Tip</strong>：即使你的高适配方向看起来偏创意或研究，也可以从「稳妥入口」开始积累经验，再逐步转向理想方向。
+  <br><span class="kz-en">Even if your best-fit directions seem creative or research-oriented, you can start from safe entry points and gradually move toward your ideal path.</span>
+</div>
+
+
+<h2>一、我的兴趣舞台 | My Interest Stage</h2>
+<p>你的 Holland 三码是 <strong>RIC</strong>，三个字母分别代表你最感兴趣、次感兴趣和第三感兴趣的工作舞台。</p>
+<p class="kz-en">Your Holland code is <strong>RIC</strong>. The three letters represent your strongest, second-strongest, and third-strongest areas of work interest.</p>
+<table>
+  <tr><th>排名 / Rank</th><th>类型 / Type</th><th>舞台标签 / Stage Tag</th><th>含义 / Meaning</th></tr>
+  
+        <tr>
+          <td>1</td>
+          <td>R — 现实型（Realistic）</td>
+          <td><span class="kz-stage-badge">实践行动派 / Hands-On Doer</span></td>
+          <td>喜欢使用工具、机器或体力技能解决实际问题，重视具体成果。<br><span class="kz-en">You enjoy working with tools, machines, or physical skills to solve practical problems.</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>I — 研究型（Investigative）</td>
+          <td><span class="kz-stage-badge">探索思考派 / Curious Investigator</span></td>
+          <td>喜欢观察、学习、研究、分析、评估和解决问题，重视独立思考和知识探索。<br><span class="kz-en">You enjoy observing, learning, researching, analyzing, evaluating, and solving problems.</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>C — 常规型（Conventional）</td>
+          <td><span class="kz-stage-badge">秩序组织派 / Order Organizer</span></td>
+          <td>喜欢处理数据、文件、细节和规范化流程，重视准确性、条理性和稳定性。<br><span class="kz-en">You prefer working with data, documents, details, and standardized processes.</span></td>
+        </tr>
+</table>
+
+
+<h2>二、我的优势风格 | My Strengths Style</h2>
+<p>你的 Gallup CliftonStrengths Top 10 主题按排名加权后，<strong>战略思维</strong> 领域得分最高，是最能代表你稳定工作方式的领域；<strong>执行力</strong> 为次要领域。这意味着你最自然的工作方式是 <strong>战略思考型 / Strategic Thinker</strong>。</p>
+<p class="kz-en">When your Gallup CliftonStrengths Top 10 themes are weighted by rank, <strong>Strategic Thinking</strong> scores highest as your leading domain and <strong>Executing</strong> is your secondary domain. Your most natural way of working is as an <strong>Strategic Thinker</strong>.</p>
+<div class="kz-card">
+  <p><strong>战略思维 / Strategic Thinking</strong>：喜欢分析、想象、规划未来，善于在复杂信息中找到方向。/ You analyze, imagine, and plan, finding direction in complexity.</p>
+</div>
+<h3>Top 5 才干主题 | Your Top 5 Themes</h3>
+<table>
+  <tr><th>排名 / Rank</th><th>主题 / Theme</th><th>领域 / Domain</th><th>一句话定义 / One-Liner</th></tr>
+  
+        <tr>
+          <td>1</td>
+          <td>思维 / Intellection</td>
+          <td>Strategic Thinking / Strategic Thinking</td>
+          <td>思维 主题的标准定义待补充。</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>分析 / Analytical</td>
+          <td>Strategic Thinking / Strategic Thinking</td>
+          <td>分析 主题的标准定义待补充。</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>排难 / Restorative</td>
+          <td>Executing / Executing</td>
+          <td>排难 主题的标准定义待补充。</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>专注 / Focus</td>
+          <td>Executing / Executing</td>
+          <td>专注 主题的标准定义待补充。</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>学习 / Learner</td>
+          <td>Strategic Thinking / Strategic Thinking</td>
+          <td>学习 主题的标准定义待补充。</td>
+        </tr>
+</table>
+<p><strong>领域分布 / Domain Distribution</strong>：</p>
+<ul class="kz-list">
+  <li>Strategic Thinking / Strategic Thinking：3</li><li>Executing / Executing：2</li>
+</ul>
+
+
+<h2>三、兴趣 × 优势交叉矩阵 | Interest × Strengths Cross-Matrix</h2>
+<p>下方矩阵展示了 6 种 RIASEC 兴趣类型与 4 大 CliftonStrengths 优势领域的交叉组合。标注规则：</p>
+<ul class="kz-list">
+  <li><strong>粗体 / Bold</strong> = 你的主导交叉象限（Holland 第一码 × 主导优势领域）</li>
+  <li>⭐ = 你的次要交叉象限（Holland 第二码 × 主导优势领域，或 Holland 第一码 × 次要优势领域）</li>
+  <li>○ = 你的第三码相关象限（Holland 第三码 × 主导优势领域）</li>
+</ul>
+<p class="kz-en"><em>Bold = dominant intersection (1st Holland letter × leading domain); ⭐ = secondary intersection (2nd Holland letter × leading domain, or 1st Holland letter × secondary domain); ○ = tertiary-code related intersection (3rd Holland letter × leading domain).</em></p>
+<table><tr><th class="kz-matrix-header">RIASEC \ 领域 / Domain</th><th class="kz-matrix-header">战略思维 / Strategic Thinking</th><th class="kz-matrix-header">执行力 / Executing</th><th class="kz-matrix-header">影响力 / Influencing</th><th class="kz-matrix-header">关系建立 / Relationship Building</th></tr><tr><th>R / Realistic</th><td class="kz-matrix-dominant">技术研发工程师、数据工程师、法医技师、技术研究员</td><td class="kz-matrix-secondary">⭐ 项目经理、施工主管、质量控制员、设备运维经理</td><td class="">技术销售、产品演示专家、创业技术合伙人</td><td class="">技术培训师、设备维护顾问、运动教练</td></tr><tr><th>I / Investigative</th><td class="kz-matrix-secondary">⭐ 科学家、研究员、战略顾问、数据科学家</td><td class="">医学实验技师、合规研究员、技术文档工程师</td><td class="">科学传播者、技术产品经理、行业分析师</td><td class="">医学教育者、研究导师、科普作家</td></tr><tr><th>A / Artistic</th><td class="">概念设计师、艺术研究员、品牌策略师</td><td class="">出版编辑、展览执行、舞台监督</td><td class="">创意总监、品牌公关、艺术经纪人</td><td class="">艺术治疗师、创意写作教师、社区艺术组织者</td></tr><tr><th>S / Social</th><td class="">教育心理学家、用户研究员、课程设计师</td><td class="">学校行政、护士、社工案例管理者</td><td class="">培训师、教育管理者、公益组织领导者</td><td class="">心理咨询师、教师、辅导员、HR 伙伴</td></tr><tr><th>E / Enterprising</th><td class="">管理顾问、投资分析师、商业战略家</td><td class="">运营总监、项目经理、企业高管</td><td class="">创业者、销售总监、投资人、政治家</td><td class="">客户关系总监、HRD、组织发展顾问</td></tr><tr><th>C / Conventional</th><td class="kz-matrix-tertiary">○ 财务分析师、精算师、数据架构师</td><td class="">会计师、审计师、行政经理、运营专员</td><td class="">销售运营经理、采购经理、商务拓展</td><td class="">客户服务经理、HR 运营、员工关系专员</td></tr></table>
+<p><strong>你的交叉点 / Your Intersection</strong>：现实型（Realistic） × 战略思维 / Realistic × Strategic Thinking</p>
+<p><strong>次要交叉点 / Secondary Intersection</strong>：现实型（Realistic） × 执行力 / Realistic × Executing</p>
+
+
+<h2>四、推荐申请专业 | Recommended Majors</h2>
+<p>以下专业根据推荐职业路径分层整理。<strong>核心专业</strong>建议优先了解；<strong>拓展专业</strong>可作为备选或第二专业方向；<strong>可关注专业</strong>适合作为长期兴趣跟踪。</p>
+<p class="kz-en"><em>Majors are organized by priority. <strong>Core</strong> majors are the top priorities; <strong>Expand</strong> majors are alternatives or second-field options; <strong>Watch</strong> majors are for long-term interest tracking.</em></p>
+
+<h3>4.1 核心专业 | Core Majors</h3>
+<table>
+  <tr><th>专业 / Major</th><th>国内可报说明 / Domestic Note</th><th>海外方向（以英国为例）/ Overseas Example (UK)</th></tr>
+  
+        <tr>
+          <td>机械工程</td>
+          <td>工学门类</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>电子工程</td>
+          <td>工学门类</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>自动化</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>计算机科学</td>
+          <td>理学/工学 / 工学（计算机类）</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>材料科学</td>
+          <td>理学/工学</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>数据科学</td>
+          <td>理学/工学 / 工学（计算机类）</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>软件工程</td>
+          <td>工学门类 / 工学（计算机类）</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>统计学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+</table>
+
+<h3>4.2 拓展专业 | Expand Majors</h3>
+<table>
+  <tr><th>专业 / Major</th><th>国内可报说明 / Domestic Note</th><th>海外方向（以英国为例）/ Overseas Example (UK)</th></tr>
+  
+        <tr>
+          <td>信息系统</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>应用物理</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>应用化学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>生物技术</td>
+          <td>理学/工学 / 医学/理学</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>工程研究</td>
+          <td>工学门类</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>物理学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>化学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>生物学</td>
+          <td>医学/理学</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+</table>
+
+<h3>4.3 可关注专业 | Watch Majors</h3>
+<table>
+  <tr><th>专业 / Major</th><th>国内可报说明 / Domestic Note</th><th>海外方向（以英国为例）/ Overseas Example (UK)</th></tr>
+  
+        <tr>
+          <td>数学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>地球科学</td>
+          <td>理学/工学</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>各学科基础研究专业</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>研究方法学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>管理学</td>
+          <td>按具体院校招生目录查询</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+        <tr>
+          <td>经济学</td>
+          <td>经济学/管理学</td>
+          <td>建议按具体院校查询 / Check programme titles</td>
+        </tr>
+</table>
+
+<div class="kz-warning">
+  ⚠️ <strong>提醒 / Reminder</strong>：推荐专业仅为参考路径。国内路径需对照教育部本科专业目录与各省招生计划；海外路径需以目标院校官网 Programme/Course 名称为准。
+  <br><span class="kz-en">Recommended majors are reference paths. For domestic applications, verify against the Ministry of Education catalog and provincial enrollment plans. For overseas applications, confirm programme titles on target university websites.</span>
+</div>
+
+
+<h2>五、推荐职业路径 | Recommended Career Paths</h2>
+<p>以下推荐分为三个层级：</p>
+<ol class="kz-list">
+  <li><strong>高适配路径 / High Fit</strong>：与你的主导兴趣和主导优势精确匹配。</li>
+  <li><strong>中适配路径 / Moderate Fit</strong>：与你的主导兴趣或主导优势部分匹配，可作为拓展方向。</li>
+  <li><strong>就业友好备选 / Employment-Friendly Alternatives</strong>：即使你对某些高适配方向存有顾虑，这些方向也能让你在现实就业市场中找到稳定入口。</li>
+</ol>
+<p class="kz-en"><em>Recommendations are divided into three tiers. Each career is tagged with <strong>Steady Employment</strong>, <strong>Explore-oriented</strong>, or <strong>High Challenge</strong> to help you choose.</em></p>
+
+<div class="kz-card">
+  <p><strong>标签说明 / Tag Guide</strong>：</p>
+  <ul class="kz-list">
+    <li><span class="kz-tag kz-tag-steady">稳就业型 / Steady Employment</span>：岗位需求稳定，入行路径清晰。</li>
+    <li><span class="kz-tag kz-tag-explore">探索型 / Explore-oriented</span>：需要更多尝试和积累，适合作为长期方向。</li>
+    <li><span class="kz-tag kz-tag-challenge">高挑战型 / High Challenge</span>：竞争激烈或需要长期资源积累，适合有强烈动机的人。</li>
+  </ul>
+</div>
+
+<h3>5.1 高适配路径 | High Fit</h3>
+<table>
+  <tr><th>职业 / Career</th><th>标签 / Tag</th><th>主要工作 / What They Do</th><th>相关专业 / Related Majors</th></tr>
+  
+        <tr>
+          <td>技术研发工程师</td>
+          <td><span class="kz-tag kz-tag-explore">探索型 / Explore-oriented</span></td>
+          <td>负责将技术方案转化为实际产品，包括设计原型、编写技术文档、调试设备、解决生产中的技术问题。</td>
+          <td>机械工程、电子工程、自动化、计算机科学、材料科学</td>
+        </tr>
+        <tr>
+          <td>数据工程师</td>
+          <td><span class="kz-tag kz-tag-explore">探索型 / Explore-oriented</span></td>
+          <td>搭建数据收集和存储系统，清洗原始数据，设计数据管道，确保分析团队能稳定获取高质量数据。</td>
+          <td>数据科学、计算机科学、软件工程、统计学、信息系统</td>
+        </tr>
+        <tr>
+          <td>技术研究员</td>
+          <td><span class="kz-tag kz-tag-explore">探索型 / Explore-oriented</span></td>
+          <td>围绕特定技术课题开展实验、收集数据、撰写研究报告，推动新技术或新工艺从概念走向应用。</td>
+          <td>应用物理、应用化学、生物技术、工程研究</td>
+        </tr>
+</table>
+
+<h3>5.2 中适配路径 | Moderate Fit</h3>
+<table>
+  <tr><th>职业 / Career</th><th>标签 / Tag</th><th>主要工作 / What They Do</th><th>相关专业 / Related Majors</th></tr>
+  
+        <tr>
+          <td>科学家</td>
+          <td><span class="kz-tag kz-tag-explore">探索型 / Explore-oriented</span></td>
+          <td>在高校、研究所或企业实验室围绕自然科学问题开展长期研究，发表学术论文并申请科研项目。</td>
+          <td>物理学、化学、生物学、数学、地球科学</td>
+        </tr>
+        <tr>
+          <td>研究员</td>
+          <td><span class="kz-tag kz-tag-explore">探索型 / Explore-oriented</span></td>
+          <td>针对特定课题查阅文献、设计实验、分析数据并撰写报告，为决策或学术发展提供依据。</td>
+          <td>各学科基础研究专业、统计学、研究方法学</td>
+        </tr>
+        <tr>
+          <td>战略顾问</td>
+          <td><span class="kz-tag kz-tag-challenge">高挑战型 / High Challenge</span></td>
+          <td>分析企业或机构的竞争环境与发展瓶颈，提出业务模式、市场进入或组织调整建议。</td>
+          <td>管理学、经济学、运筹学、商业分析、政治学</td>
+        </tr>
+        <tr>
+          <td>财务分析师</td>
+          <td><span class="kz-tag kz-tag-challenge">高挑战型 / High Challenge</span></td>
+          <td>编制预算、分析财务报表、监控经营指标，为管理层提供财务决策支持。</td>
+          <td>财务管理、会计学、金融学、经济学、统计学</td>
+        </tr>
+        <tr>
+          <td>精算师</td>
+          <td><span class="kz-tag kz-tag-steady">稳就业型 / Steady Employment</span></td>
+          <td>运用统计与金融模型评估保险、养老金等长期风险，计算保费与准备金。</td>
+          <td>精算学、统计学、数学、金融学、保险学</td>
+        </tr>
+</table>
+
+<h3>5.3 就业友好备选 | Employment-Friendly Alternatives</h3>
+<table>
+  <tr><th>职业 / Career</th><th>标签 / Tag</th><th>为何作为备选 / Why This Alternative</th><th>相关专业 / Related Majors</th></tr>
+  <tr><td colspan="4">暂无 / None</td></tr>
+</table>
+
+
+<h2>六、就业市场参考 | Employment Market Reference</h2>
+<div class="kz-tip">
+  <strong>数据建设中 / Data Under Construction</strong>：本模块计划接入第三方就业数据源（招聘平台、行业报告、校友追踪），为每个推荐职业补充平均起薪、岗位需求、学历要求、热门城市与发展路径。当前版本暂以框架形式呈现，具体数值请以目标院校就业报告和招聘平台实时数据为准。
+  <br><span class="kz-en">This module will integrate third-party employment data (job platforms, industry reports, alumni tracking) to add entry salary, job demand, education requirements, top cities, and career paths for each recommended role. Current version shows the framework only; please verify specific figures against university employment reports and live job platforms.</span>
+</div>
+<table>
+  <tr><th>数据项 / Data Item</th><th>说明 / Description</th><th>参考来源 / Potential Source</th></tr>
+  <tr><td>平均起薪 / Entry Salary</td><td>应届生或初级岗位的中位数起薪</td><td>麦可思、智联招聘、BOSS直聘</td></tr>
+  <tr><td>岗位需求量 / Job Demand</td><td>近一年招聘发布数量与增长趋势</td><td>智联招聘、前程无忧、猎聘</td></tr>
+  <tr><td>学历要求 / Education Requirement</td><td>本科/硕士/博士占比</td><td>教育部就业质量报告、招聘平台</td></tr>
+  <tr><td>热门城市 / Top Cities</td><td>岗位分布集中的城市或地区</td><td>BOSS直聘、猎聘城市报告</td></tr>
+  <tr><td>发展路径 / Career Path</td><td>3-5 年、5-10 年的典型晋升方向</td><td>行业报告、校友访谈</td></tr>
+</table>
+
+
+<h2>七、证据等级说明与科学性建设 | Evidence Levels & Scientific Roadmap</h2>
+<h3>7.1 当前证据等级定义 | Current Evidence Level Definitions</h3>
+<table>
+  <tr><th>等级 / Level</th><th>含义 / Meaning</th><th>当前应用情况 / Current Application</th></tr>
+  <tr><td><strong>A</strong></td><td>大样本实证研究或长期追踪数据支持</td><td>当前暂无，需通过用户毕业去向追踪积累</td></tr>
+  <tr><td><strong>B</strong></td><td>小样本研究、专家评审或行业调研支持</td><td>当前暂无，可通过行业专家访谈与毕业生反馈逐步建立</td></tr>
+  <tr><td><strong>C</strong></td><td>理论推导与现有文献综述支持</td><td>当前大部分职业-专业映射属于此等级</td></tr>
+  <tr><td><strong>D</strong></td><td>基于个案经验或初步假设</td><td>少量映射属于此等级</td></tr>
+</table>
+
+<h3>7.2 如何积累 A/B 级证据 | How to Build A/B-Level Evidence</h3>
+<ol class="kz-list">
+  <li><strong>毕业生追踪研究 / Graduate tracking studies</strong>：对使用本工具的用户进行 1 年、3 年、5 年跟踪，记录其专业选择与职业满意度。
+    <br><span class="kz-en">Follow users at 1, 3, and 5 years to record major choices and career satisfaction.</span></li>
+  <li><strong>行业专家评议 / Expert review</strong>：邀请各职业领域的资深从业者对推荐匹配度进行 1-5 分评分。
+    <br><span class="kz-en">Invite senior practitioners to rate the fit of recommendations.</span></li>
+  <li><strong>用人单位调研 / Employer surveys</strong>：收集招聘方对相关专业毕业生的能力匹配评价。
+    <br><span class="kz-en">Collect hiring managers' assessments of graduates from related majors.</span></li>
+  <li><strong>纵向对照实验 / Longitudinal controlled experiments</strong>：对比使用本工具与未使用本工具的学生在专业选择清晰度、就业对口率上的差异。
+    <br><span class="kz-en">Compare students who used the tool versus those who did not.</span></li>
+</ol>
+
+
+<h2>八、兴趣-优势整合分析 | Interest-Strengths Integration</h2>
+<ul class="kz-list">
+  <li><strong>主导兴趣 / Dominant Interest</strong>：现实型（Realistic）</li>
+  <li><strong>主导优势 / Dominant Strength</strong>：战略思维 / Strategic Thinking</li>
+  <li><strong>整体契合度 / Overall Fit</strong>：兴趣与优势高度一致 / High alignment</li>
+</ul>
+<div class="kz-card">
+  <p><strong>张力分析 / Tension Analysis</strong>：你的 Gallup 主导领域（战略思维）与 Holland 三码中的 I 型高度一致，说明你在相关方向上拥有内外双重能量支撑。 / Your leading Gallup domain (战略思维) aligns strongly with the I type in your Holland code, giving you both internal motivation and natural ability in related directions.</p>
+</div>
+<div class="kz-tip">
+  <strong>一致性提示 / Consistency</strong>：三码在六边形上相对集中，兴趣轮廓较为清晰。/ Your three-letter code is relatively consistent on the hexagon.
+</div>
+
+
+<h2>九、行动跟踪模块 | Action Tracking Module</h2>
+<p>本模块帮助你把报告结论转化为具体行动并记录进展。若使用在线版工具，可自动保存打卡与复盘。</p>
+<p class="kz-en">This module helps turn report insights into concrete actions and track progress. The online version can automatically save check-ins and reflections.</p>
+
+<h3>行动 1：职业访谈记录 | Career Interview Log</h3>
+<table>
+  <tr><th>项目 / Item</th><th>内容 / Content</th></tr>
+  <tr><td>访谈对象 / Interviewee</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>职业 / Career</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>访谈日期 / Date</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>三个关键发现 / Key Insights</td><td>1. <span class="kz-answer-line"></span><br>2. <span class="kz-answer-line"></span><br>3. <span class="kz-answer-line"></span></td></tr>
+  <tr><td>我喜欢 / What I Liked</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>我担心 / What Concerned Me</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>下一步 / Next Step</td><td><span class="kz-answer-line"></span></td></tr>
+</table>
+
+<h3>行动 2：专业体验记录 | Major Exploration Log</h3>
+<table>
+  <tr><th>项目 / Item</th><th>内容 / Content</th></tr>
+  <tr><td>体验专业 / Major</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>体验方式 / Activity</td><td>□ 线上课程 / Online course &nbsp; □ 校园开放日 / Open day &nbsp; □ 旁听课程 / Audit &nbsp; □ 实习 / Internship</td></tr>
+  <tr><td>体验时间 / Date</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>感受 / Reflection</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>是否愿意继续探索 / Continue?</td><td>□ 是 / Yes &nbsp; □ 否 / No &nbsp; □ 再试试 / Maybe</td></tr>
+</table>
+
+<h3>行动 3：月度复盘 | Monthly Review</h3>
+<table>
+  <tr><th>问题 / Question</th><th>我的回答 / My Answer</th></tr>
+  <tr><td>这个月我尝试了哪些方向？ / What did I try this month?</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>哪些方向让我更有能量？ / What energized me?</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>哪些方向让我感觉不适合？ / What felt like a poor fit?</td><td><span class="kz-answer-line"></span></td></tr>
+  <tr><td>下个月我要聚焦什么？ / What will I focus on next month?</td><td><span class="kz-answer-line"></span></td></tr>
+</table>
+
+
+<h2>十、下一步行动 | Next Steps</h2>
+<ol class="kz-list">
+  <li><strong>阅读学生一页纸摘要 / Read student one-pager</strong>：快速抓住核心结论。</li>
+  <li><strong>选择 1-2 个稳妥入口职业 / Pick 1-2 safe entry points</strong>：在招聘网站查找真实岗位描述。</li>
+  <li><strong>了解 2-3 个核心专业 / Explore 2-3 core majors</strong>：查看目标院校的国内招生目录或海外 Programme 页面。</li>
+  <li><strong>完成一次职业访谈 / Do one career interview</strong>：记录到「行动跟踪模块」。</li>
+  <li><strong>与测评师讨论 / Discuss with a counselor</strong>：带着报告参加一对一职业咨询。</li>
+</ol>
+
+
+<h2>附录：专业版解读 | Appendix: Professional Interpretation</h2>
+<h3>A. RIASEC 剖面 | RIASEC Profile</h3>
+<table>
+  <tr><th>类型 / Type</th><th>得分 / Score</th><th>类型 / Type</th><th>得分 / Score</th></tr>
+  
+        <tr>
+          <td>R 现实型 / Realistic</td><td>40</td>
+          <td>I 研究型 / Investigative</td><td>40</td>
+        </tr>
+        <tr>
+          <td>A 艺术型 / Artistic</td><td>15</td>
+          <td>S 社会型 / Social</td><td>20</td>
+        </tr>
+        <tr>
+          <td>E 企业型 / Enterprising</td><td>16</td>
+          <td>C 常规型 / Conventional</td><td>40</td>
+        </tr>
+</table>
+<ul class="kz-list">
+  <li><strong>三码 / Code</strong>：RIC</li>
+  <li><strong>区分度提示 / Differentiation Note</strong>：最高与最低分相差 25 分，兴趣轮廓较为平缓。</li>
+  <li><span class="kz-en"><strong>Differentiation Note</strong>：The gap between highest and lowest scores is 25; your interest profile is relatively flat.</span></li>
+</ul>
+
+<h3>B. 主题叙事 | Theme Narrative</h3>
+<div class="kz-warning">
+  <strong>说明 / Note</strong>：以下主题详细描述中的“标准定义”已提供中文，“特征 / Feature”“应用 / Application”“盲点 / Blind Spots” 目前仍为英文素材。我们已经为每个主题补充了双语一句话定义（见 Top 5 表格），并会在后续版本中完成全部 narrative 的标准化翻译。如果你现在需要中文解读，建议优先参考 Top 5 表格中的一句话定义。
+  <br><span class="kz-en">The "Standard Definition" below is in Chinese, while Feature / Application / Blind Spots remain in English source material. A bilingual one-liner has been added for each theme (see Top 5 table), and full narrative translation will be standardized in a future release. For Chinese interpretation now, prioritize the one-liner definitions in the Top 5 table.</span>
+</div>
+
+        <h4>思维 / Intellection（Strategic Thinking / Strategic Thinking）</h4>
+        <p><strong>标准定义 / Standard Definition</strong>：思维 主题的标准定义待补充。</p>
+        <p><strong>特征 / Feature</strong>：</p>
+        <p><strong>应用 / Application</strong>：</p>
+        <p><strong>盲点 / Blind Spots</strong>：</p>
+        <hr style="border:0;border-top:1px solid #e5e7eb;margin:16px 0;">
+        
+        <h4>分析 / Analytical（Strategic Thinking / Strategic Thinking）</h4>
+        <p><strong>标准定义 / Standard Definition</strong>：分析 主题的标准定义待补充。</p>
+        <p><strong>特征 / Feature</strong>：</p>
+        <p><strong>应用 / Application</strong>：</p>
+        <p><strong>盲点 / Blind Spots</strong>：</p>
+        <hr style="border:0;border-top:1px solid #e5e7eb;margin:16px 0;">
+        
+        <h4>排难 / Restorative（Executing / Executing）</h4>
+        <p><strong>标准定义 / Standard Definition</strong>：排难 主题的标准定义待补充。</p>
+        <p><strong>特征 / Feature</strong>：</p>
+        <p><strong>应用 / Application</strong>：</p>
+        <p><strong>盲点 / Blind Spots</strong>：</p>
+        <hr style="border:0;border-top:1px solid #e5e7eb;margin:16px 0;">
+        
+        <h4>专注 / Focus（Executing / Executing）</h4>
+        <p><strong>标准定义 / Standard Definition</strong>：专注 主题的标准定义待补充。</p>
+        <p><strong>特征 / Feature</strong>：</p>
+        <p><strong>应用 / Application</strong>：</p>
+        <p><strong>盲点 / Blind Spots</strong>：</p>
+        <hr style="border:0;border-top:1px solid #e5e7eb;margin:16px 0;">
+        
+        <h4>学习 / Learner（Strategic Thinking / Strategic Thinking）</h4>
+        <p><strong>标准定义 / Standard Definition</strong>：学习 主题的标准定义待补充。</p>
+        <p><strong>特征 / Feature</strong>：</p>
+        <p><strong>应用 / Application</strong>：</p>
+        <p><strong>盲点 / Blind Spots</strong>：</p>
+        <hr style="border:0;border-top:1px solid #e5e7eb;margin:16px 0;">
+        
+<p><strong>主导领域分析 / Leading Domain Analysis</strong>：Top 5 中 战略思维 / Strategic Thinking 领域占 3 项，说明该生在行动方式上偏向 <strong>战略思考型 / Strategic Thinker</strong>。</p>
+<p class="kz-en"><em>In your Top 5, Strategic Thinking accounts for 3 themes, indicating a natural tendency toward Strategic Thinker.</em></p>
+
+<h3>C. 伦理与边界声明 | Ethics & Boundaries</h3>
+<ul class="kz-list">
+  <li>本报告基于理论推导与模拟数据，未经过实证验证，仅用于职业探索参考。/ <span class="kz-en">This report is based on theoretical integration and simulated data, not empirically validated. It is for career exploration reference only.</span></li>
+  <li>不用于选拔、分班、评奖等高利害决策。/ <span class="kz-en">Not for high-stakes decisions such as selection, placement, or awards.</span></li>
+  <li>不替代专业心理咨询或临床评估。/ <span class="kz-en">Not a substitute for professional psychological counseling or clinical assessment.</span></li>
+  <li>职业建议仅为可能性探索，需结合能力、价值观、市场需求综合判断。/ <span class="kz-en">Career suggestions are possibilities to explore; final decisions require integrating ability, values, and market demand.</span></li>
+</ul>
+
+</div>

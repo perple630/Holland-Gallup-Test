@@ -74,7 +74,7 @@ Rounds & Tracey（1996）的经典元分析发现：在 76 个国际矩阵（18 
 O*NET 正在通过以下方式更新 RIASEC 数据：
 
 1. **机器学习方法**：利用机器学习生成更新的 Occupational Interest Profiles（OIPs）与 Holland 高码（high-point codes），并对变化显著的职业进行专家复核（O*NET Resource Center, 2026）\[B]。
-2. **“基本兴趣（Basic Interests）”扩展**：O*NET 30.3（2026 年 5 月）新增了 41 个具体兴趣领域，超越传统 6 个 RIASEC 类别，覆盖 891 个数据级职业（O*NET Resource Center, 2026）\[B]。
+2. **“基本兴趣（Basic Interests）”扩展**：O*NET 30.3（2026 年 5 月）新增了 41 个具体兴趣领域（Specific Interest Areas），超越传统 6 个 RIASEC 类别，覆盖 891 个数据级职业（O*NET Resource Center, 2026）\[B]。完整对照表见 `data/processed/onet_41_basic_interests_riasec.md`。
 3. **三维度内容模型**：将信息重组为 Worker、Job 和 Market 三个维度，提升职业信息的颗粒度（O*NET Resource Center, 2026）\[B]。
 
 ### 4.2 数字经济与新兴职业的挑战

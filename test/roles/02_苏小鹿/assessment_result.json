@@ -1,0 +1,73 @@
+{
+  "user_id": "3c1ee34e-5786-4eb9-90ee-4ea371e73693",
+  "username": "role02_suxiaolu",
+  "password": "role123456",
+  "display_name": "苏小鹿",
+  "label": "角色二 · 视觉设计师",
+  "holland_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "ASI",
+    "gallup_top5": [
+      "前瞻",
+      "思维",
+      "沟通",
+      "个别",
+      "完美"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "关系建立",
+    "holland_scores": {
+      "R": 15,
+      "I": 24,
+      "A": 47,
+      "S": 27,
+      "E": 19,
+      "C": 15
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 117,
+      "b_side_covered": 0,
+      "a_side_ratio": 0.65,
+      "b_side_ratio": 0.0
+    },
+    "holland_quality": {
+      "differentiation": 32,
+      "is_flat": false
+    }
+  },
+  "gallup_result": {
+    "holland_done": true,
+    "gallup_done": true,
+    "holland_code": "ASI",
+    "gallup_top5": [
+      "前瞻",
+      "思维",
+      "成就",
+      "追求",
+      "沟通"
+    ],
+    "gallup_domain": "战略思维",
+    "gallup_secondary_domain": "影响力",
+    "holland_scores": {
+      "R": 15,
+      "I": 24,
+      "A": 47,
+      "S": 27,
+      "E": 19,
+      "C": 15
+    },
+    "gallup_coverage": {
+      "total_questions": 180,
+      "a_side_covered": 180,
+      "b_side_covered": 180,
+      "a_side_ratio": 1.0,
+      "b_side_ratio": 1.0
+    },
+    "holland_quality": {
+      "differentiation": 32,
+      "is_flat": false
+    }
+  }
+}
